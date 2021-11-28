@@ -24,7 +24,8 @@ class Accordion extends Component {
   }
 
   onClick = label => {
-    const { props: { allowMultipleOpen }, state: { openSections } } = this;
+    const { props: { allowMultipleOpen }, 
+    state: { openSections } } = this;
 
     const isOpen = !!openSections[label];
 
@@ -53,11 +54,13 @@ class Accordion extends Component {
 
     return (
       <div>
-        {children.map(child => (
+        {children.map((child, index) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={onClick}
+            key={index}
+           
           >
             {child.props.children}
           </AccordionSection>

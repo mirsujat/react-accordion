@@ -8,15 +8,30 @@ class AccordionSection extends Component {
   };
 
   render() {
-    const { onClick, props: { isOpen, label } } = this;
+    const { onClick, props: { isOpen, label, index } } = this;
   
     return (
       <div className="Accordion">
-        <button onClick={onClick} className="Accordion-trigger">
+        <button 
+        id={`Accordion_${index}`} 
+        className="Accordion-trigger" 
+        onClick={onClick} 
+        aria-expanded={isOpen}
+        aria-controls={`Accordion_Panel_${index}`}
+        >
+          <span className="Accordion-title">
           {label}
+          <span className="Accordion-icon"></span>
+          </span>
         </button>
+
         {isOpen && (
-          <div className="panel">
+          <div id={`Accordion_Panel_${index}`}
+           className="Accordion-panel"
+           role="region"
+           aria-labelledby={`Accordion_${index}`}
+           
+           >
             {this.props.children}
           </div>
         )}
