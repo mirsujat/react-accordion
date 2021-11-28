@@ -2,13 +2,17 @@ import React, { Component } from "react";
 
 
 class AccordionSection extends Component {
-
+    constructor(props) {
+        super(props);
+        
+      }
+      
   onClick = () => {
     this.props.onClick(this.props.label);
   };
 
   render() {
-    const { onClick, onKeyUp, props: { isOpen, label, index } } = this;
+    const { onClick,  props: { isOpen, label, index, onKeyUp, ref } } = this;
   
     return (
       <div className="Accordion">
@@ -19,6 +23,8 @@ class AccordionSection extends Component {
         aria-expanded={isOpen}
         aria-controls={`Accordion_Panel_${index}`}
         onKeyUp={onKeyUp}
+        tabIndex="0"
+        ref={ref}
         >
           <span className="Accordion-title">
           {label}
@@ -31,6 +37,7 @@ class AccordionSection extends Component {
            className="Accordion-panel"
            role="region"
            aria-labelledby={`Accordion_${index}`}
+           aria-hidden={isOpen}
            >
             {this.props.children}
           </div>
