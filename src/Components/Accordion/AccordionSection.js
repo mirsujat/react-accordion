@@ -4,15 +4,17 @@ import React, { Component } from "react";
 class AccordionSection extends Component {
     constructor(props) {
         super(props);
-        
+         this.activeLink = React.createRef();
       }
-      
+  // componentDidUpdate = () =>{
+  //   this.activeLink.focus();
+  // }
   onClick = () => {
     this.props.onClick(this.props.label);
   };
 
   render() {
-    const { onClick,  props: { isOpen, label, index, onKeyUp, ref } } = this;
+    const { onClick,  props: { isOpen, label, index, onKeyUp } } = this;
   
     return (
       <div className="Accordion">
@@ -24,7 +26,7 @@ class AccordionSection extends Component {
         aria-controls={`Accordion_Panel_${index}`}
         onKeyUp={onKeyUp}
         tabIndex="0"
-        ref={ref}
+        
         >
           <span className="Accordion-title">
           {label}
