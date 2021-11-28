@@ -22,45 +22,53 @@ class Accordion extends Component {
 
     this.state = { openSections };
   }
-
-  onClick = label => {
+  
+  handleAccordionOpen = (label) =>{
     const { props: { allowMultipleOpen }, 
-    state: { openSections } } = this;
+        state: { openSections } } = this;
 
-    const isOpen = !!openSections[label];
+        const isOpen = !!openSections[label];
 
-    if (allowMultipleOpen) {
-      this.setState({
-        openSections: {
-          ...openSections,
-          [label]: !isOpen
+        if (allowMultipleOpen) {
+          this.setState({
+            openSections: {
+              ...openSections,
+              [label]: !isOpen
+            }
+          });
+        } else {
+          this.setState({
+            openSections: {
+              [label]: !isOpen
+            }
+          });
         }
-      });
-    } else {
-      this.setState({
-        openSections: {
-          [label]: !isOpen
-        }
-      });
-    }
+  }
+
+  handleOnClick = (label) => {
+    this.handleAccordionOpen(label)
   };
+// Bind keyboard behaviors on the main accordion container
+handleOnKeyUp = () =>{
+
+}
 
   render() {
     const { 
-      onClick,
+      handleOnClick,
       props: { children },
       state: { openSections },
     } = this;
 
     return (
       <div>
-        {children.map((child, index) => (
-          
+        {children.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
-            onClick={onClick}
-            key={index}
+            onClick={handleOnClick}
+            key={i}
+            index={i}
           >
             {child.props.children}
           </AccordionSection>

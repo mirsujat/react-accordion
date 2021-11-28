@@ -8,7 +8,7 @@ class AccordionSection extends Component {
   };
 
   render() {
-    const { onClick, props: { isOpen, label, index } } = this;
+    const { onClick, onKeyUp, props: { isOpen, label, index } } = this;
   
     return (
       <div className="Accordion">
@@ -18,6 +18,7 @@ class AccordionSection extends Component {
         onClick={onClick} 
         aria-expanded={isOpen}
         aria-controls={`Accordion_Panel_${index}`}
+        onKeyUp={onKeyUp}
         >
           <span className="Accordion-title">
           {label}
@@ -30,7 +31,6 @@ class AccordionSection extends Component {
            className="Accordion-panel"
            role="region"
            aria-labelledby={`Accordion_${index}`}
-           
            >
             {this.props.children}
           </div>
