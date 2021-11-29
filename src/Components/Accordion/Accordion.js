@@ -12,8 +12,7 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-    const accordions = props.children;
-    accordions.forEach(child => {
+    this.props.children.forEach(child => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
@@ -29,13 +28,11 @@ class Accordion extends Component {
     down: 40,
     delete: 46
     };
-   this.activeLink = React.createRef();
+  
   }
   
   //TODO
-  //  componentDidUpdate = () =>{
-  //   this.activeLink.focus();
-  // }
+ 
 
   // helper function
   handleAccordionOpen = (label) =>{
@@ -64,25 +61,10 @@ class Accordion extends Component {
     this.handleAccordionOpen(label)
   };
 
-  nextSection = (label) =>{
-    let index = this.accordions.indexOf(label);
-    if(index < this.accordions.length -1) this.handleAccordionOpen(this.accordions[index + 1])
-  }
 // Bind keyboard behaviors on the main accordion container
-  handleOnKeyUp = (e, lable) =>{
-    e.preventDefault();
-    let key = e.keyCode;
-    switch(key){
-      case this.NavigationKeys.tabKey:
-        this.handleAccordionOpen(lable);
-        break;
-      case this.NavigationKeys.right:
-        this.nextSection(lable);
-        break;
+handleOnKeyUp = () =>{
 
-        default:
-    }
-  }
+}
 
   render() {
     const { 
@@ -98,8 +80,7 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={handleOnClick}
-            onKeyUp={e => this.handleOnKeyUp(e, child)}
-            ref={el => {if(child.props.label === openSections[child.props.label]) this.activeLink = el}}
+           
             key={i}
             index={i}
           >
