@@ -27,9 +27,6 @@ class Accordion extends Component {
       down: 40
     }
   }
-  // 38 = Up, 40 = Down
-  //TODO
- 
 
   // helper function
   handleAccordionOpen = (label) =>{
@@ -69,13 +66,13 @@ class Accordion extends Component {
 
   goFirstAccordion = (accordion) =>{
     let index = this.accordions.indexOf(accordion)
-    if(index > 0){
+    if(index !== 0){
       this.handleAccordionOpen(this.accordions[0])
     }
   }
-  golastAccordion = (accordion) =>{
+  goLastAccordion = (accordion) =>{
     let index = this.accordions.indexOf(accordion)
-    if(index < this.accordions.length -1){
+    if(index !== this.accordions.length){
       this.handleAccordionOpen(this.accordions[this.accordions.length])
     }
   }
@@ -84,16 +81,36 @@ class Accordion extends Component {
     this.handleAccordionOpen(label)
   };
 
+
+
+//TODO
+//openSections:{[object Object]: true}
+//TODO solve the above issue
+
+
 // Bind keyboard behaviors on the main accordion container
 handleOnKeyUp = (event, accordion) =>{
-   event.preventDefault();
+  event.preventDefault();
   let key = event.keyCode;
   // 33 = Page Up, 34 = Page Down
   let ctrlModifier = (event.ctrlKey && key.match(/33|34/));
   // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
   // 38 = Up, 40 = Down, home= 36, end = 35
-  
-
+  switch(key){
+    case this.navigationKey.down:
+      this.goNextAccordion(accordion)
+      break;
+    case this.navigationKey.up:
+      this.goPreviousAccordion(accordion)
+      break;
+    case this.navigationKey.home:
+      this.goFirstAccordion(accordion)
+      break;
+    case this.navigationKey.end:
+      this.goLastAccordion(accordion)
+      break;
+    default:
+  }
 }
   render() {
     const { 
@@ -101,14 +118,15 @@ handleOnKeyUp = (event, accordion) =>{
       state: { openSections },
     } = this;
 
+    console.log("Length", this.accordions.length);
     return (
-      <div>
+      <div className="Accordion">
         { this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={handleOnClick}
-            onKeyUp={e => this.handleOnKeyUp(e, child)}
+            onKeyUp={e => this.handleOnKeyUp(e, child.props.label)}
             key={i}
             index={i}
           >

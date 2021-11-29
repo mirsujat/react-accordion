@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 
 
 class AccordionSection extends Component {
@@ -6,20 +6,20 @@ class AccordionSection extends Component {
         super(props);
          this.activeLink = React.createRef();
       }
-  focusButton = () =>{
-    this.activeLink.current.focus();
-  }
+  // focusButton = () =>{
+  //   this.activeLink.current.focus();
+  // }
 
   onClick = () => {
     this.props.onClick(this.props.label);
-    this.focusButton();
+    
   };
 
   render() {
     const { onClick,  props: { isOpen, label, index, onKeyUp } } = this;
   
     return (
-      <div className="Accordion">
+      <Fragment>
         <button 
         id={`Accordion_${index}`} 
         className="Accordion-trigger" 
@@ -28,7 +28,7 @@ class AccordionSection extends Component {
         aria-controls={`Accordion_Panel_${index}`}
         onKeyUp={onKeyUp}
         tabIndex="0"
-        ref={this.activeLink}
+        
         
         >
           <span className="Accordion-title">
@@ -42,12 +42,13 @@ class AccordionSection extends Component {
            className="Accordion-panel"
            role="region"
            aria-labelledby={`Accordion_${index}`}
-           aria-hidden={isOpen}
+           aria-hidden={!isOpen}
+           
            >
             {this.props.children}
           </div>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
