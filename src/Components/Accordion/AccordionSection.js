@@ -6,11 +6,13 @@ class AccordionSection extends Component {
         super(props);
          this.activeLink = React.createRef();
       }
-  // componentDidUpdate = () =>{
-  //   this.activeLink.focus();
-  // }
+  focusButton = () =>{
+    this.activeLink.current.focus();
+  }
+
   onClick = () => {
     this.props.onClick(this.props.label);
+    this.focusButton();
   };
 
   render() {
@@ -26,6 +28,7 @@ class AccordionSection extends Component {
         aria-controls={`Accordion_Panel_${index}`}
         onKeyUp={onKeyUp}
         tabIndex="0"
+        ref={this.activeLink}
         
         >
           <span className="Accordion-title">
