@@ -1,5 +1,6 @@
 
 import Accordion from './Components/Accordion/Accordion';
+import AccordionSection from './Components/Accordion/AccordionSection';
 
 import './App.css';
 function App() {
@@ -10,7 +11,7 @@ function App() {
       </header>
       <main>
         <Accordion>
-        <div label="Alligator Mississippiensis">
+        <AccordionSection label="Alligator Mississippiensis">
           <p>
             <strong>Common Name:</strong> American Alligator
           </p>
@@ -21,8 +22,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
-        </div>
-        <div label="Mississippiensis Lambaa">
+        </AccordionSection>
+        <AccordionSection label="Mississippiensis Lambaa">
           <p>
             <strong>Common Name:</strong> American Alligator
           </p>
@@ -33,8 +34,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
-        </div>
-        <div label="Alligator Sinensis">
+        </AccordionSection>
+        <AccordionSection label="Alligator Sinensis">
           <p>
             <strong>Common Name:</strong> Chinese Alligator
           </p>
@@ -44,7 +45,7 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Critically Endangered
           </p>
-        </div>
+        </AccordionSection>
       </Accordion>
       <h2>Allow Multiple Open + Open Section By Default</h2>
       <Accordion allowMultipleOpen>

@@ -15,6 +15,7 @@ class AccordionSection extends Component {
   
     return (
       <Fragment>
+        <h3>
         <button 
         id={`Accordion_${index}`} 
         className="Accordion-trigger" 
@@ -31,17 +32,15 @@ class AccordionSection extends Component {
           <span className="Accordion-icon"></span>
           </span>
         </button>
-
+        </h3>
         {isOpen && (
-          <div id={`Accordion_Panel_${index}`}
+          <section id={`Accordion_Panel_${index}`}
            className="Accordion-panel"
-           role="region"
            aria-labelledby={`Accordion_${index}`}
            aria-hidden={!isOpen}
-           
            >
             {this.props.children}
-          </div>
+          </section>
         )}
       </Fragment>
     );

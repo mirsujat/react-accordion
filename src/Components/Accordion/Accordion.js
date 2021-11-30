@@ -25,15 +25,14 @@ class Accordion extends Component {
       home: 36,
       up: 38,
       down: 40
-    }
+    };
   }
-
-
 
   // helper function
   handleAccordionOpen = (label) =>{
     const { props: { allowMultipleOpen }, 
         state: { openSections } } = this;
+    let index = this.accordions.indexOf(label);
 
         const isOpen = !!openSections[label];
 
@@ -56,7 +55,7 @@ class Accordion extends Component {
   goNextAccordion = (accordion)=>{
     let index = this.accordions.indexOf(accordion)
     if(index < this.accordions.length -1){
-      let label = this.accordions[index + 1].props.label;
+      let label = this.accordions[index + 1];
       this.handleAccordionOpen(label)
       // console.log("label", this.accordions[index + 1].props.label)
     }
@@ -86,13 +85,6 @@ class Accordion extends Component {
   handleOnClick = (label) => {
     this.handleAccordionOpen(label)
   };
-
-
-
-//TODO
-//openSections:{[object Object]: true}
-//TODO solve the above issue
-
 
 // Bind keyboard behaviors on the main accordion container
 handleOnKeyUp = (event, accordion) =>{
@@ -133,7 +125,7 @@ handleOnKeyUp = (event, accordion) =>{
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={handleOnClick}
-            onKeyUp={(e) => this.handleOnKeyUp(e, child.props.label)}
+            onKeyUp={(e) => this.handleOnKeyUp(e, child)}
             key={i}
             index={i}
           >
