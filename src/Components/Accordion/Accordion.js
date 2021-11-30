@@ -13,7 +13,7 @@ class Accordion extends Component {
     super(props);
     const openSections = {};
     this.accordions = props.children;
-    this.props.children.forEach(child => {
+    this.accordions.forEach(child => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
@@ -27,6 +27,8 @@ class Accordion extends Component {
       down: 40
     }
   }
+
+
 
   // helper function
   handleAccordionOpen = (label) =>{
@@ -54,7 +56,9 @@ class Accordion extends Component {
   goNextAccordion = (accordion)=>{
     let index = this.accordions.indexOf(accordion)
     if(index < this.accordions.length -1){
-      this.handleAccordionOpen(this.accordions[index + 1])
+      let label = this.accordions[index + 1].props.label;
+      this.handleAccordionOpen(label)
+      // console.log("label", this.accordions[index + 1].props.label)
     }
   }
   goPreviousAccordion = (accordion) =>{
@@ -73,7 +77,9 @@ class Accordion extends Component {
   goLastAccordion = (accordion) =>{
     let index = this.accordions.indexOf(accordion)
     if(index !== this.accordions.length){
-      this.handleAccordionOpen(this.accordions[this.accordions.length])
+
+      // this.handleAccordionOpen(this.accordions[this.accordions.length].props.label)
+      
     }
   }
 
@@ -118,7 +124,8 @@ handleOnKeyUp = (event, accordion) =>{
       state: { openSections },
     } = this;
 
-    console.log("Length", this.accordions.length);
+    console.log("Accordions", this.accordions[1].props.label);
+   
     return (
       <div className="Accordion">
         { this.accordions.map((child, i) => (
@@ -126,7 +133,7 @@ handleOnKeyUp = (event, accordion) =>{
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={handleOnClick}
-            onKeyUp={e => this.handleOnKeyUp(e, child.props.label)}
+            onKeyUp={(e) => this.handleOnKeyUp(e, child.props.label)}
             key={i}
             index={i}
           >

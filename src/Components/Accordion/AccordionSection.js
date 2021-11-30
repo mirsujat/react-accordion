@@ -4,19 +4,18 @@ import React, { Component, Fragment } from "react";
 class AccordionSection extends Component {
     constructor(props) {
         super(props);
-         this.activeLink = React.createRef();
+         
       }
-  // focusButton = () =>{
-  //   this.activeLink.current.focus();
-  // }
+
 
   onClick = () => {
     this.props.onClick(this.props.label);
     
   };
+ 
 
   render() {
-    const { onClick,  props: { isOpen, label, index, onKeyUp } } = this;
+    const { onClick,  props: { isOpen, label, index, onKeyUp} } = this;
   
     return (
       <Fragment>
