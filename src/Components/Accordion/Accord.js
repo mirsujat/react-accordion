@@ -12,7 +12,14 @@ class Accord extends Component {
         this.setState({isExpanded})
     }
     onClick = (accordion) =>{
-        this.setState({isExpanded: accordion})
+        let index = this.accordions.indexOf(accordion);
+        let newIndex = this.accordions.find(accordion => accordion.props.index) 
+        if(  index === newIndex ){
+            this.setState({isExpanded: true});
+        }else{
+            this.setState({isExpanded: false});
+        }
+       
     }
 
     render() {
@@ -21,7 +28,7 @@ class Accord extends Component {
                {this.accordions.map((childe, i) =>(
                    <AccordionItem
                     title={childe.props.title}
-                    isExpanded={() => childe === this.state.isExpanded}
+                    isExpanded={this.state.isExpanded}
                     onClick={() => this.onClick(childe)}
                     index={i}
                     key={i}

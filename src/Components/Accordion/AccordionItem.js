@@ -8,7 +8,7 @@ function AccordionItem({ index, title, children, isExpanded, onClick }) {
           id={`${index}-header`}
           className="Accordion-trigger" 
           aria-controls={`${index}-panel`}
-          aria-expanded={isExpanded()}
+          aria-expanded={isExpanded}
           onClick={onClick}
 
         >
@@ -18,12 +18,12 @@ function AccordionItem({ index, title, children, isExpanded, onClick }) {
             </span>
         </button>
       </h3>
-      {isExpanded() && (
+      {isExpanded && (
         <section
         id={`${index}-panel`}
         className="Accordion-panel"
         aria-labelledby={`${index}-header`}
-        aria-hidden={!isExpanded()}
+        aria-hidden={!isExpanded}
         >
             {children}
         </section>         
