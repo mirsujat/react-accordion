@@ -1,6 +1,6 @@
 
-import Accord from './Components/Accordion/Accord';
-import AccordionItem from './Components/Accordion/AccordionItem';
+import Accordion from './Components/Accordion/Accordion';
+import AccordionSection from './Components/Accordion/AccordionSection';
 
 import './App.css';
 function App() {
@@ -10,8 +10,8 @@ function App() {
         <h1>Accessible React Accordion</h1>
       </header>
       <main>
-        <Accord>
-        <AccordionItem title="Alligator Mississippiensis">
+        <Accordion>
+        <AccordionSection label="Alligator Mississippiensis">
           <p>
             <strong>Common Name:</strong> American Alligator
           </p>
@@ -22,8 +22,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
-        </AccordionItem>
-        <AccordionItem title="Mississippiensis Lambaa">
+        </AccordionSection>
+        <AccordionSection label="Mississippiensis Lambaa">
           <p>
             <strong>Common Name:</strong> American Alligator
           </p>
@@ -34,8 +34,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
-        </AccordionItem>
-        <AccordionItem title="Alligator Sinensis">
+        </AccordionSection>
+        <AccordionSection label="Alligator Sinensis">
           <p>
             <strong>Common Name:</strong> Chinese Alligator
           </p>
@@ -45,8 +45,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Critically Endangered
           </p>
-        </AccordionItem>
-      </Accord>
+        </AccordionSection>
+      </Accordion>
       
       </main>
     </div>

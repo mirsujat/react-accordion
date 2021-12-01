@@ -28,12 +28,11 @@ class Accordion extends Component {
     };
   }
 
+  
   // helper function
   handleAccordionOpen = (label) =>{
     const { props: { allowMultipleOpen }, 
         state: { openSections } } = this;
-    let index = this.accordions.indexOf(label);
-
         const isOpen = !!openSections[label];
 
         if (allowMultipleOpen) {
@@ -52,71 +51,15 @@ class Accordion extends Component {
         }
   }
 
-  goNextAccordion = (accordion)=>{
-    let index = this.accordions.indexOf(accordion)
-    if(index < this.accordions.length -1){
-      let label = this.accordions[index + 1];
-      this.handleAccordionOpen(label)
-      // console.log("label", this.accordions[index + 1].props.label)
-    }
-  }
-  goPreviousAccordion = (accordion) =>{
-    let index = this.accordions.indexOf(accordion)
-    if(index > 0){
-      this.handleAccordionOpen(this.accordions[index - 1])
-    }
-  }
-
-  goFirstAccordion = (accordion) =>{
-    let index = this.accordions.indexOf(accordion)
-    if(index !== 0){
-      this.handleAccordionOpen(this.accordions[0])
-    }
-  }
-  goLastAccordion = (accordion) =>{
-    let index = this.accordions.indexOf(accordion)
-    if(index !== this.accordions.length){
-
-      // this.handleAccordionOpen(this.accordions[this.accordions.length].props.label)
-      
-    }
-  }
-
   handleOnClick = (label) => {
     this.handleAccordionOpen(label)
   };
 
-// Bind keyboard behaviors on the main accordion container
-handleOnKeyUp = (event, accordion) =>{
-  event.preventDefault();
-  let key = event.keyCode;
-  // 33 = Page Up, 34 = Page Down
-  let ctrlModifier = (event.ctrlKey && key.match(/33|34/));
-  // Up/ Down arrow and Control + Page Up/ Page Down keyboard operations
-  // 38 = Up, 40 = Down, home= 36, end = 35
-  switch(key){
-    case this.navigationKey.down:
-      this.goNextAccordion(accordion)
-      break;
-    case this.navigationKey.up:
-      this.goPreviousAccordion(accordion)
-      break;
-    case this.navigationKey.home:
-      this.goFirstAccordion(accordion)
-      break;
-    case this.navigationKey.end:
-      this.goLastAccordion(accordion)
-      break;
-    default:
-  }
-}
   render() {
     const { 
       handleOnClick,
       state: { openSections },
     } = this;
-
-    console.log("Accordions", this.accordions[1].props.label);
    
     return (
       <div className="Accordion">

@@ -10,7 +10,6 @@ function AccordionItem({ index, title, children, isExpanded, onClick }) {
           aria-controls={`${index}-panel`}
           aria-expanded={isExpanded}
           onClick={onClick}
-
         >
             <span className="Accordion-title">
             {title}

@@ -17,15 +17,13 @@ class AccordionSection extends Component {
       <Fragment>
         <h3>
         <button 
-        id={`Accordion_${index}`} 
-        className="Accordion-trigger" 
-        onClick={onClick} 
-        aria-expanded={isOpen}
-        aria-controls={`Accordion_Panel_${index}`}
-        onKeyUp={onKeyUp}
-        tabIndex="0"
-        
-        
+            id={`Accordion_${index}`} 
+            className="Accordion-trigger" 
+            onClick={onClick} 
+            aria-expanded={isOpen}
+            aria-controls={`Accordion_Panel_${index}`}
+            onKeyUp={onKeyUp}
+            tabIndex="0"
         >
           <span className="Accordion-title">
           {label}
@@ -35,9 +33,9 @@ class AccordionSection extends Component {
         </h3>
         {isOpen && (
           <section id={`Accordion_Panel_${index}`}
-           className="Accordion-panel"
-           aria-labelledby={`Accordion_${index}`}
-           aria-hidden={!isOpen}
+              className="Accordion-panel"
+              aria-labelledby={`Accordion_${index}`}
+              aria-hidden={!isOpen}
            >
             {this.props.children}
           </section>
