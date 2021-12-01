@@ -1,6 +1,6 @@
 
-import Accordion from './Components/Accordion/Accordion';
-import AccordionSection from './Components/Accordion/AccordionSection';
+import Accord from './Components/Accordion/Accord';
+import AccordionItem from './Components/Accordion/AccordionItem';
 
 import './App.css';
 function App() {
@@ -10,8 +10,8 @@ function App() {
         <h1>Accessible React Accordion</h1>
       </header>
       <main>
-        <Accordion>
-        <AccordionSection label="Alligator Mississippiensis">
+        <Accord>
+        <AccordionItem title="Alligator Mississippiensis">
           <p>
             <strong>Common Name:</strong> American Alligator
           </p>
@@ -22,8 +22,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
-        </AccordionSection>
-        <AccordionSection label="Mississippiensis Lambaa">
+        </AccordionItem>
+        <AccordionItem title="Mississippiensis Lambaa">
           <p>
             <strong>Common Name:</strong> American Alligator
           </p>
@@ -34,8 +34,8 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
-        </AccordionSection>
-        <AccordionSection label="Alligator Sinensis">
+        </AccordionItem>
+        <AccordionItem title="Alligator Sinensis">
           <p>
             <strong>Common Name:</strong> Chinese Alligator
           </p>
@@ -45,34 +45,9 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Critically Endangered
           </p>
-        </AccordionSection>
-      </Accordion>
-      <h2>Allow Multiple Open + Open Section By Default</h2>
-      <Accordion allowMultipleOpen>
-        <div label="Alligator Mississippiensis" isOpen>
-          <p>
-            <strong>Common Name:</strong> American Alligator
-          </p>
-          <p>
-            <strong>Distribution:</strong> Texas to North Carolina, United
-            States
-          </p>
-          <p>
-            <strong>Endangered Status:</strong> Currently Not Endangered
-          </p>
-        </div>
-        <div label="Alligator Sinensis">
-          <p>
-            <strong>Common Name:</strong> Chinese Alligator
-          </p>
-          <p>
-            <strong>Distribution:</strong> Eastern China
-          </p>
-          <p>
-            <strong>Endangered Status:</strong> Critically Endangered
-          </p>
-        </div>
-      </Accordion>
+        </AccordionItem>
+      </Accord>
+      
       </main>
     </div>
   );
