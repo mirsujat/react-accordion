@@ -18,7 +18,7 @@ class Accordion extends Component {
         openSections[child.props.label] = true;
       }
     });
-    this.state = { openSections };
+    this.state = { openSections, selected: false };
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -26,9 +26,20 @@ class Accordion extends Component {
       up: 38,
       down: 40
     };
+    this.elementRef = React.createRef();
   }
 
-  
+ 
+
+  componentDidMount = () =>{
+    let selected = this.accordions.find(accord => accord.props.isOpen) 
+    || this.accordions[0];
+    this.setState({selected})
+  }
+   componentDidUpdate = () =>{
+    this.elementRef.current.focus();
+  }
+
   // helper function
   handleAccordionOpen = (label) =>{
     const { props: { allowMultipleOpen }, 
@@ -51,13 +62,37 @@ class Accordion extends Component {
         }
   }
 
-  handleOnClick = (label) => {
+   handleOnClick = (label) => {
     this.handleAccordionOpen(label)
   };
+
+  selected = (accordion) =>{
+    this.setState({selected: accordion})
+  }
+
+  goNext = (accordion) =>{
+    let accordions = this.accordions;
+    let index = accordions.indexOf(accordion);
+    let length = accordions.length;
+    if(index < length - 1 ) this.selected(accordions[index + 1]);
+    
+  }
+
+ 
+
+  onKeyUp = (e, accordion) =>{
+    e.preventDefault();
+    let key = e.keyCode;
+    if(key === 40){
+      this.goNext(accordion);
+    } 
+  }
+
 
   render() {
     const { 
       handleOnClick,
+      onKeyUp,
       state: { openSections },
     } = this;
    
@@ -68,9 +103,10 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={handleOnClick}
-            onKeyUp={(e) => this.handleOnKeyUp(e, child)}
+            onKeyUp={onKeyUp}
             key={i}
             index={i}
+            activeLink={this.elementRef}
           >
             {child.props.children}
           </AccordionSection>
