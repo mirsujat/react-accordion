@@ -57,26 +57,18 @@ class Accordion extends Component {
             },
             selected: [i]
           });
-        }
+       }
   }
 
    toggle = (label, i) => {
     this.handleAccordionOpen(label, i)
   };
 
-  selected = (accordion) =>{
-    this.setState({selected: accordion})
-  }
-
-  
- 
 
   onKeyUp = (e, accordion) =>{
     e.preventDefault();
     let key = e.keyCode;
-    if(key === 40){
-      this.goNext(accordion);
-    } 
+    
   }
 
 
@@ -97,6 +89,8 @@ class Accordion extends Component {
             toggle={toggle}
             onKeyUp={onKeyUp}
             ref={this.focusRef}
+            onFocus={() => this.focusRef.current = i}
+            onBlur={() => this.focusRef.current = null}
             key={i}
             index={i}
           >

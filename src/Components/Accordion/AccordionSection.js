@@ -3,7 +3,7 @@ import React, { Fragment, useEffect } from "react";
 
 const AccordionSection = React.forwardRef((props, ref) => {
 
-  const { isOpen, label, index,  toggle, selected, children} = props;
+  const { isOpen, label, index,  toggle, selected, children, onFocus, onBlur} = props;
 
    useEffect(() => {
     if (index === selected[0] && ref.current) {
@@ -23,7 +23,8 @@ const AccordionSection = React.forwardRef((props, ref) => {
             onClick={onClick} 
             aria-expanded={isOpen}
             aria-controls={`Accordion_Panel_${index}`}
-            
+            onFocus={onFocus}
+            onBlur={onBlur}
             ref={ref}
             tabIndex="0"
             >
