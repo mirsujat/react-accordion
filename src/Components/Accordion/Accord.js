@@ -5,25 +5,31 @@ class Accord extends Component {
         super(props);
       
         this.accordions = props.children;
-        this.state = {isExpanded : false};
+        this.state = {isExpanded: [], selected: [null]};
+        // this.focusRef = React.createRef();
     }
-    componentDidMount = () => {
-        let isExpanded = !!this.accordions.find(accordion => accordion.props.isExpanded) 
-        || this.accordions[0];
-        this.setState({isExpanded})
-    }
-    onClick = (title) =>{
-        this.setState({isExpanded: title})
+
+    onClick = (id) =>{
+    const isExpanded = this.state.isExpanded;
+      this.setState({
+          isExpanded: {
+              ...isExpanded,
+              [id] : !isExpanded[id]
+          }
+      })
     }
 
     render() {
+        const {selected, isExpanded} = this.state;
         return (
            <div className="Accordion">
                {this.accordions.map((child, i) =>(
                    <AccordionItem
                     title={child.props.title}
-                    isExpanded={child === this.state.isExpanded}
-                    onClick={() => this.onClick(child)}
+                    selected={selected}
+                    isExpanded={isExpanded}
+                    onClick={() => this.onClick(i)}
+                    // ref={this.focusRef}
                     index={i}
                     key={i}
                    >

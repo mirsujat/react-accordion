@@ -1,36 +1,31 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment } from "react";
 
 
-class AccordionSection extends Component {
-   
-  onClick = () => {
-    this.props.onClick(this.props.label);
+const AccordionSection = React.forwardRef((props, ref) => {
+
+  const { isOpen, label, index, onKeyUp, toggle} = props;
+
+  const onClick = () => {
+    toggle(props.label);
   };
- onKeyUp = () =>{
-   this.props.onKeyUp(this.props.children)
- }
-
-  render() {
-    const { onClick,  props: { isOpen, label, index, onKeyUp, activeLink} } = this;
-  
-    return (
-      <Fragment>
-        <h3>
-        <button 
+     return(
+       <Fragment>
+         <h3>
+           <button 
             id={`Accordion_${index}`} 
             className="Accordion-trigger" 
             onClick={onClick} 
             aria-expanded={isOpen}
             aria-controls={`Accordion_Panel_${index}`}
             onKeyUp={onKeyUp}
-            ref={activeLink}
+            ref={ref}
             tabIndex="0"
-        >
-          <span className="Accordion-title">
-          {label}
-          <span className="Accordion-icon"></span>
-          </span>
-        </button>
+            >
+            <span className="Accordion-title">
+            {label}
+            <span className="Accordion-icon"></span>
+            </span>
+          </button>
         </h3>
         {isOpen && (
           <section id={`Accordion_Panel_${index}`}
@@ -42,8 +37,7 @@ class AccordionSection extends Component {
           </section>
         )}
       </Fragment>
-    );
-  }
-}
+     )
+   })
 
 export default AccordionSection;

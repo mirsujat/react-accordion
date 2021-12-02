@@ -32,12 +32,7 @@ class Accordion extends Component {
  
 
   componentDidMount = () =>{
-    let selected = this.accordions.find(accord => accord.props.isOpen) 
-    || this.accordions[0];
-    this.setState({selected})
-  }
-   componentDidUpdate = () =>{
-    this.elementRef.current.focus();
+   
   }
 
   // helper function
@@ -103,10 +98,8 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             onClick={handleOnClick}
-            onKeyUp={onKeyUp}
             key={i}
             index={i}
-            activeLink={this.elementRef}
           >
             {child.props.children}
           </AccordionSection>
