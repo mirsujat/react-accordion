@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-
-
+import React, { Component, useEffect } from "react";
 import AccordionSection from "./AccordionSection";
 
 class Accordion extends Component {
@@ -18,7 +16,7 @@ class Accordion extends Component {
         openSections[child.props.label] = true;
       }
     });
-    this.state = { openSections, selected: false };
+    this.state = { openSections, selected: [null] };
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -26,20 +24,24 @@ class Accordion extends Component {
       up: 38,
       down: 40
     };
-    this.elementRef = React.createRef();
+    this.focusRef = React.createRef();
   }
 
- 
-
-  componentDidMount = () =>{
-   
-  }
+  //TODO
+  // useEffect(() => {
+  //   const {selected} = this.state;
+  //   const index = this.accordions.indexOf();
+  //   if (index === selected[0] && focusRef.current) {
+  //     this.focusRef.current.focus();
+  //   }
+  // }, [index, selected]);
 
   // helper function
-  handleAccordionOpen = (label) =>{
+  handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
         state: { openSections } } = this;
         const isOpen = !!openSections[label];
+    
 
         if (allowMultipleOpen) {
           this.setState({
@@ -52,27 +54,21 @@ class Accordion extends Component {
           this.setState({
             openSections: {
               [label]: !isOpen
-            }
+            },
+            selected: [i]
           });
         }
   }
 
-   handleOnClick = (label) => {
-    this.handleAccordionOpen(label)
+   toggle = (label, i) => {
+    this.handleAccordionOpen(label, i)
   };
 
   selected = (accordion) =>{
     this.setState({selected: accordion})
   }
 
-  goNext = (accordion) =>{
-    let accordions = this.accordions;
-    let index = accordions.indexOf(accordion);
-    let length = accordions.length;
-    if(index < length - 1 ) this.selected(accordions[index + 1]);
-    
-  }
-
+  
  
 
   onKeyUp = (e, accordion) =>{
@@ -86,9 +82,9 @@ class Accordion extends Component {
 
   render() {
     const { 
-      handleOnClick,
+      toggle,
       onKeyUp,
-      state: { openSections },
+      state: { openSections, selected },
     } = this;
    
     return (
@@ -96,8 +92,11 @@ class Accordion extends Component {
         { this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
+            selected={selected}
             label={child.props.label}
-            onClick={handleOnClick}
+            toggle={toggle}
+            onKeyUp={onKeyUp}
+            ref={this.focusRef}
             key={i}
             index={i}
           >
