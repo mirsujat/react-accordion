@@ -3,13 +3,13 @@ import React, { Fragment, useEffect } from "react";
 
 const AccordionSection = React.forwardRef((props, ref) => {
 
-  const { isOpen, label, index,  toggle, selected, children, onFocus, onBlur} = props;
+  const { isOpen, label, index,  toggle, selected, children} = props;
 
-   useEffect(() => {
-    if (index === selected[0] && ref.current) {
-      ref.current.focus();
-    }
-  }, [index, selected]); 
+  //  useEffect(() => {
+  //   if (index === selected[0] && ref.current) {
+  //     ref.current.focus();
+  //   }
+  // }, [index, selected, ref]); 
 
   const onClick = () => {
     toggle(label, index);
@@ -23,10 +23,8 @@ const AccordionSection = React.forwardRef((props, ref) => {
             onClick={onClick} 
             aria-expanded={isOpen}
             aria-controls={`Accordion_Panel_${index}`}
-            onFocus={onFocus}
-            onBlur={onBlur}
             ref={ref}
-            tabIndex="0"
+            tabIndex={0}
             >
             <span className="Accordion-title">
             {label}

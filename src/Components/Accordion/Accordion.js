@@ -1,4 +1,5 @@
-import React, { Component, useEffect } from "react";
+import React, { Component} from "react";
+
 import AccordionSection from "./AccordionSection";
 
 class Accordion extends Component {
@@ -11,7 +12,7 @@ class Accordion extends Component {
     super(props);
     const openSections = {};
     this.accordions = props.children;
-    this.accordions.forEach(child => {
+     this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
@@ -27,14 +28,11 @@ class Accordion extends Component {
     this.focusRef = React.createRef();
   }
 
-  //TODO
-  // useEffect(() => {
-  //   const {selected} = this.state;
-  //   const index = this.accordions.indexOf();
-  //   if (index === selected[0] && focusRef.current) {
-  //     this.focusRef.current.focus();
-  //   }
-  // }, [index, selected]);
+  componentDidUpdate(){
+    this.focusRef.current.focus();
+  }
+
+   //TODO
 
   // helper function
   handleAccordionOpen = (label, i) =>{
@@ -78,6 +76,7 @@ class Accordion extends Component {
       onKeyUp,
       state: { openSections, selected },
     } = this;
+    console.log("focusRef:", this.focusRef.current);
    
     return (
       <div className="Accordion">
@@ -88,15 +87,14 @@ class Accordion extends Component {
             label={child.props.label}
             toggle={toggle}
             onKeyUp={onKeyUp}
-            ref={this.focusRef}
-            onFocus={() => this.focusRef.current = i}
-            onBlur={() => this.focusRef.current = null}
+            ref={ this.focusRef}
             key={i}
             index={i}
           >
             {child.props.children}
           </AccordionSection>
         ))}
+
       </div>
     );
   }
