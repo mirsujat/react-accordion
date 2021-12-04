@@ -1,27 +1,13 @@
-import React, { Fragment, useRef, useEffect } from "react";
+import React, { Fragment } from "react";
 
 
-const AccordionSection = ({isOpen, label, index,  children}) =>{
+const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>{
  
-  const focusRef = useRef(null);
-
-  useEffect(() =>{
-    focusRef.current.focus()
-  }, [])
   const onClick = () => {
-    const {label, index, toggle} = this.props;
     toggle(label, index);
   };
-  const setFocusRef = ()=> {
-    // Explicitly focus the DOM node using the raw DOM API
-    // Note: we're accessing "current" to get the DOM node
-    focusRef.current.focus();
-  }
 
-
-
-   
-   
+  console.log("focusRef: ", focusRef);
     return(
       <Fragment>
       <h3>
@@ -32,7 +18,6 @@ const AccordionSection = ({isOpen, label, index,  children}) =>{
          aria-expanded={isOpen}
          aria-controls={`Accordion_Panel_${index}`}
          ref={focusRef}
-         onKeyDown={setFocusRef}
          tabIndex={0}
          >
          <span className="Accordion-title">
