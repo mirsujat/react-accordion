@@ -1,19 +1,18 @@
 import React, { Fragment, useEffect } from "react";
 
 
-const AccordionSection = React.forwardRef((props, ref) => {
+const AccordionSection = ({ isOpen, label, index,  toggle, focusRef, children}) => {
 
-  const { isOpen, label, index,  toggle, selected, children} = props;
+ 
 
   //  useEffect(() => {
-  //   if (index === selected[0] && ref.current) {
-  //     ref.current.focus();
-  //   }
-  // }, [index, selected, ref]); 
+  //   focusRef.current.focus()
+  // }, [focusRef]); 
 
   const onClick = () => {
     toggle(label, index);
   };
+console.log("focusRef: ", focusRef.current)
      return(
        <Fragment>
          <h3>
@@ -23,7 +22,7 @@ const AccordionSection = React.forwardRef((props, ref) => {
             onClick={onClick} 
             aria-expanded={isOpen}
             aria-controls={`Accordion_Panel_${index}`}
-            ref={ref}
+            ref={focusRef}
             tabIndex={0}
             >
             <span className="Accordion-title">
@@ -43,6 +42,6 @@ const AccordionSection = React.forwardRef((props, ref) => {
         )}
       </Fragment>
      )
-   })
+   }
 
 export default AccordionSection;

@@ -25,12 +25,21 @@ class Accordion extends Component {
       up: 38,
       down: 40
     };
-    this.focusRef = React.createRef();
+    this.labelRef = null;
+    this.setLabelRef = element => {
+      this.labelRef = element;
+    };
+    this.focusLabelRef = () => {
+      // Focus the text input using the raw DOM API
+      if (this.labelRef) this.labelRef.focus();
+    };
   }
 
-  componentDidUpdate(){
-    this.focusRef.current.focus();
+  componentDidMount() {
+    // autofocus the input on mount
+    this.focusLabelRef();
   }
+
 
    //TODO
 
@@ -60,6 +69,7 @@ class Accordion extends Component {
 
    toggle = (label, i) => {
     this.handleAccordionOpen(label, i)
+    this.focusLabelRef();
   };
 
 
@@ -76,7 +86,7 @@ class Accordion extends Component {
       onKeyUp,
       state: { openSections, selected },
     } = this;
-    console.log("focusRef:", this.focusRef.current);
+   console.log("labelRef: ", this.labelRef)
    
     return (
       <div className="Accordion">
@@ -87,7 +97,7 @@ class Accordion extends Component {
             label={child.props.label}
             toggle={toggle}
             onKeyUp={onKeyUp}
-            ref={ this.focusRef}
+            focusRef={this.setLabelRef}
             key={i}
             index={i}
           >
