@@ -29,14 +29,18 @@ class Accordion extends Component {
     this.setLabelRef = element => {
       this.labelRef = element;
     };
-
+ this.setFocus = () =>{
+   if(this.labelRef){
+    this.labelRef.focus();
+   }  
+  }
   }
 
-  // setFocus = () =>{
-  //  if(this.labelRef.current){
-  //     this.setLabelRef();
-  //  }
-  // }
+
+    
+  
+
+  
 
    //TODO
 
@@ -66,9 +70,10 @@ class Accordion extends Component {
 
    toggle = (label, i) => {
     this.handleAccordionOpen(label, i)
+    this.setFocus();
    
   };
-
+ 
 
   onKeyUp = (e, accordion) =>{
     e.preventDefault();
@@ -98,6 +103,7 @@ class Accordion extends Component {
             label={child.props.label}
             toggle={toggle}
             onKeyUp={onKeyUp}
+
             focusRef={this.setLabelRef}
             key={i}
             index={i}

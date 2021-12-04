@@ -18,7 +18,7 @@ const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>
          aria-expanded={isOpen}
          aria-controls={`Accordion_Panel_${index}`}
          ref={focusRef}
-         tabIndex={0}
+         tabIndex={1}
          >
          <span className="Accordion-title">
          {label}
