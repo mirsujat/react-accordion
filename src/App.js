@@ -22,6 +22,9 @@ function App() {
           <p>
             <strong>Endangered Status:</strong> Currently Not Endangered
           </p>
+             <p>
+            <strong>Endangered Status:</strong> Currently Not Endangered
+          </p>
         </AccordionSection>
         <AccordionSection label="Mississippiensis Lambaa">
           <p>
@@ -42,9 +45,7 @@ function App() {
           <p>
             <strong>Distribution:</strong> Eastern China
           </p>
-          <p>
-            <strong>Endangered Status:</strong> Critically Endangered
-          </p>
+          
         </AccordionSection>
       </Accordion>
       

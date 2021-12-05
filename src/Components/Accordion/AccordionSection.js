@@ -11,6 +11,7 @@ function usePrevious(value) {
 }
 
 const AccordionSection = ({isOpen, label, index, toggle, children}) =>{
+  const newIndex = Object.assign([], [index]);
  
   const focusRef = useRef(null);
   const [isSelect, setSelect] = useState(false);
@@ -20,13 +21,17 @@ const AccordionSection = ({isOpen, label, index, toggle, children}) =>{
   };
 
   const wasSelect = usePrevious(isSelect)
-useEffect(() =>{
-  if (!wasSelect && isSelect) {
-    focusRef.current.focus();
-  }if(wasSelect && !isSelect) return;
-}, [wasSelect, isSelect])
+
+  useEffect(() =>{
+    if (!wasSelect && isSelect) {
+      focusRef.current.focus();
+    }if(wasSelect && !isSelect && focusRef.current === null){
+      index[0] = focusRef.current.focus();
+    }  
+  }, [wasSelect, isSelect, index])
 
   console.log("focusRef: ", focusRef);
+  console.log("newIndex:", newIndex.length);
     return(
       <Fragment>
       <h3>
@@ -34,7 +39,8 @@ useEffect(() =>{
          id={`Accordion_${index}`} 
          className="Accordion-trigger" 
          onClick={onClick}
-         onKeyDown={() => setSelect(true)}
+         onFocus={() => setSelect(true)}
+         onBlur={() => setSelect(false)}
          aria-expanded={isOpen}
          aria-controls={`Accordion_Panel_${index}`}
          ref={ focusRef  }
