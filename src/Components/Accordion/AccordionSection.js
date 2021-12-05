@@ -1,11 +1,30 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef, useState } from "react";
+import { useEffect } from "react/cjs/react.development";
 
 
-const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>{
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+const AccordionSection = ({isOpen, label, index, toggle, children}) =>{
  
+  const focusRef = useRef(null);
+  const [isSelect, setSelect] = useState(false);
+  
   const onClick = () => {
     toggle(label, index);
   };
+
+  const wasSelect = usePrevious(isSelect)
+useEffect(() =>{
+  if (!wasSelect && isSelect) {
+    focusRef.current.focus();
+  }if(wasSelect && !isSelect) return;
+}, [wasSelect, isSelect])
 
   console.log("focusRef: ", focusRef);
     return(
@@ -14,10 +33,11 @@ const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>
         <button 
          id={`Accordion_${index}`} 
          className="Accordion-trigger" 
-         onClick={onClick} 
+         onClick={onClick}
+         onKeyDown={() => setSelect(true)}
          aria-expanded={isOpen}
          aria-controls={`Accordion_Panel_${index}`}
-         ref={focusRef}
+         ref={ focusRef  }
          tabIndex={1}
          >
          <span className="Accordion-title">

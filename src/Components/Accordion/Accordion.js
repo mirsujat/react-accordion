@@ -17,7 +17,8 @@ class Accordion extends Component {
         openSections[child.props.label] = true;
       }
     });
-    this.state = { openSections, selected: [null] };
+   
+    this.state = { openSections };
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -25,15 +26,8 @@ class Accordion extends Component {
       up: 38,
       down: 40
     };
-    this.labelRef = React.createRef();
-    this.setLabelRef = element => {
-      this.labelRef = element;
-    };
- this.setFocus = () =>{
-   if(this.labelRef){
-    this.labelRef.focus();
-   }  
-  }
+    
+ 
   }
 
 
@@ -62,35 +56,27 @@ class Accordion extends Component {
           this.setState({
             openSections: {
               [label]: !isOpen
-            },
-            selected: [i]
+            }
           });
        }
   }
 
    toggle = (label, i) => {
     this.handleAccordionOpen(label, i)
-    this.setFocus();
-   
   };
  
 
-  onKeyUp = (e, accordion) =>{
-    e.preventDefault();
-    let key = e.keyCode;
-    
-  }
+
 
 
   render() {
     const { 
       toggle,
-      onKeyUp,
-      state: { openSections, selected },
+      state: { openSections},
     } = this;
-   console.log("labelRef: ", this.labelRef);
   
-
+  
+  
 
   
    
@@ -99,12 +85,8 @@ class Accordion extends Component {
         { this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
-            selected={selected}
             label={child.props.label}
             toggle={toggle}
-            onKeyUp={onKeyUp}
-
-            focusRef={this.setLabelRef}
             key={i}
             index={i}
           >
