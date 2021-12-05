@@ -11,8 +11,10 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
+     this.ids = [];
     this.accordions = props.children;
      this.accordions.forEach((child, i) => {
+         this.ids[i] = child.props.label; 
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
@@ -26,15 +28,7 @@ class Accordion extends Component {
       up: 38,
       down: 40
     };
-    
- 
   }
-
-
-    
-  
-
-  
 
    //TODO
 
@@ -64,9 +58,6 @@ class Accordion extends Component {
    toggle = (label, i) => {
     this.handleAccordionOpen(label, i)
   };
- 
-
-
 
 
   render() {
@@ -74,12 +65,8 @@ class Accordion extends Component {
       toggle,
       state: { openSections},
     } = this;
+  console.log("what:", this.ids);
   
-  
-  
-
-  
-   
     return (
       <div className="Accordion">
         { this.accordions.map((child, i) => (
