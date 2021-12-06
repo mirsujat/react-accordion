@@ -23,9 +23,9 @@ class Accordion extends Component {
       }
     });
    this.findIndex = this.accordions[0];
-    this.labelRef = React.createRef();
+    this.labelRef = null;
     this.setLabelRef = el =>{
-        if(this.findIndex && this.labelRef ){
+        if(this.labelRef ){
           this.labelRef = el 
         }
     }
@@ -62,7 +62,9 @@ class Accordion extends Component {
   }
 
    toggle = (label, i) => {
-    this.handleAccordionOpen(label, i)
+    this.handleAccordionOpen(label, i);
+    //TODO
+    // this.findIndex[i] = this.labelRef.current.focus();
   };
 
 
