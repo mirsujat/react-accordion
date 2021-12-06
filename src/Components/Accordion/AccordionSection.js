@@ -10,28 +10,28 @@ function usePrevious(value) {
   return ref.current;
 }
 
-const AccordionSection = ({isOpen, label, index, toggle, children}) =>{
-  const newIndex = Object.assign([], [index]);
+const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>{
+  
  
-  const focusRef = useRef(null);
+  // const focusRef = useRef(null);
   const [isSelect, setSelect] = useState(false);
   
   const onClick = () => {
     toggle(label, index);
   };
 
-  const wasSelect = usePrevious(isSelect)
+  // const wasSelect = usePrevious(isSelect)
 
-  useEffect(() =>{
-    if (!wasSelect && isSelect) {
-      focusRef.current.focus();
-    }if(wasSelect && !isSelect && focusRef.current === null){
-      index[0] = focusRef.current.focus();
-    }  
-  }, [wasSelect, isSelect, index])
+  // useEffect(() =>{
+  //   if (!wasSelect && isSelect) {
+  //     focusRef.current.focus();
+  //   }if(wasSelect && !isSelect && focusRef.current === null){
+  //     index[0] = focusRef.current.focus();
+  //   }  
+  // }, [wasSelect, isSelect, index])
 
-  console.log("focusRef: ", focusRef);
-  console.log("newIndex:", newIndex.length);
+  console.log("focusRef:", focusRef);
+  
     return(
       <Fragment>
       <h3>

@@ -2,6 +2,9 @@ import React, { Component} from "react";
 
 import AccordionSection from "./AccordionSection";
 
+
+
+
 class Accordion extends Component {
 
   static defaultProps = {
@@ -14,12 +17,18 @@ class Accordion extends Component {
      this.ids = [];
     this.accordions = props.children;
      this.accordions.forEach((child, i) => {
-         this.ids[i] = child.props.label; 
+         this.ids[i] = [i]; 
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
     });
-   
+   this.findIndex = this.accordions[0];
+    this.labelRef = React.createRef();
+    this.setLabelRef = el =>{
+        if(this.findIndex && this.labelRef ){
+          this.labelRef = el 
+        }
+    }
     this.state = { openSections };
     this.navigationKey = {
       tabKey: 13,
@@ -65,7 +74,9 @@ class Accordion extends Component {
       toggle,
       state: { openSections},
     } = this;
-  console.log("what:", this.ids);
+
+  console.log("labelRef: ", this.labelRef);
+  console.log("index: ", this.findIndex)
   
     return (
       <div className="Accordion">
@@ -74,8 +85,10 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             toggle={toggle}
+            focusRef={this.setLabelRef}
             key={i}
-            index={i}
+            index={this.ids[i]}
+            id={this.ids[i]}
           >
             {child.props.children}
           </AccordionSection>
