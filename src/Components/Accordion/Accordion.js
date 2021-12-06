@@ -39,10 +39,7 @@ class Accordion extends Component {
     };
   }
 
-   //TODO
-
-  // helper function
-  handleAccordionOpen = (label, i) =>{
+   handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
         state: { openSections } } = this;
         const isOpen = !!openSections[label];
