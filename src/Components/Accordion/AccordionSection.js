@@ -10,11 +10,14 @@ function usePrevious(value) {
   return ref.current;
 }
 
-const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>{
+const AccordionSection = ({
+  isOpen, label, index, toggle, children, focusRef,
+  isSelected, onKeyDown
+}) =>{
   
  
   // const focusRef = useRef(null);
-  const [isSelect, setSelect] = useState(false);
+  // const [isSelect, setSelect] = useState(false);
   
   const onClick = () => {
     toggle(label, index);
@@ -39,8 +42,9 @@ const AccordionSection = ({isOpen, label, index, toggle, children, focusRef}) =>
          id={`Accordion_${index}`} 
          className="Accordion-trigger" 
          onClick={onClick}
-         onFocus={() => setSelect(true)}
-         onBlur={() => setSelect(false)}
+         onKeyDown={onKeyDown}
+         onFocus={() => isSelected}
+         onBlur={() =>!isSelected}
          aria-expanded={isOpen}
          aria-controls={`Accordion_Panel_${index}`}
          ref={ focusRef  }

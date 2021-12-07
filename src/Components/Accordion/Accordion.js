@@ -22,14 +22,14 @@ class Accordion extends Component {
         openSections[child.props.label] = true;
       }
     });
-   this.findIndex = this.accordions[0];
-    this.labelRef = null;
+   this.selected = this.accordions.find(child => child.props.isOpen) || this.accordions[0];
+    this.labelRef = React.createRef();
     this.setLabelRef = el =>{
-        if(this.labelRef ){
+        if(this.labelRef){
           this.labelRef = el 
         }
     }
-    this.state = { openSections };
+    this.state = { openSections, isSelected: this.selected };
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -38,6 +38,8 @@ class Accordion extends Component {
       down: 40
     };
   }
+
+ 
 
    handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
@@ -64,7 +66,6 @@ class Accordion extends Component {
    toggle = (label, i) => {
     this.handleAccordionOpen(label, i);
     //TODO
-    // this.findIndex[i] = this.labelRef.current.focus();
   };
 
 
@@ -75,7 +76,7 @@ class Accordion extends Component {
     } = this;
 
   console.log("labelRef: ", this.labelRef);
-  console.log("index: ", this.findIndex)
+  console.log("selected: ", this.selected)
   
     return (
       <div className="Accordion">
@@ -85,6 +86,7 @@ class Accordion extends Component {
             label={child.props.label}
             toggle={toggle}
             focusRef={this.setLabelRef}
+            isSelected={this.state.isSelected}
             key={i}
             index={this.ids[i]}
             id={this.ids[i]}
