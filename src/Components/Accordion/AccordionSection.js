@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useRef, useState } from "react";
 
 
 
@@ -11,16 +11,28 @@ import React, { Fragment } from "react";
 // }
 
 const AccordionSection = ({
-  isOpen, label, index, toggle, children, focusRef,
-  isSelected, onKeyDown
+  isOpen, label, index, toggle, children
 }) =>{
   
  
-  // const focusRef = useRef(null);
-  // const [isSelect, setSelect] = useState(false);
+ 
+  const focusRef = useRef(null);
+  const [isSelect, setSelect] = useState(false);
   
+  const setFocus = () =>{
+    setSelect({isSelect : true});
+  }
+const setBlur = () =>{
+  setSelect({isSelect : false });
+}
   const onClick = () => {
     toggle(label, index);
+    if(`Accordion_${index}` === focusRef.current.id){
+
+      setFocus()
+      focusRef.current.focus();
+    }
+   console.log("RefID: ", focusRef.current.id ); 
   };
 
   // const wasSelect = usePrevious(isSelect)
@@ -33,7 +45,9 @@ const AccordionSection = ({
   //   }  
   // }, [wasSelect, isSelect, index])
 
+  console.log("isSelect:", isSelect);
   console.log("focusRef:", focusRef);
+ 
   
     return(
       <Fragment>
@@ -42,12 +56,11 @@ const AccordionSection = ({
          id={`Accordion_${index}`} 
          className="Accordion-trigger" 
          onClick={onClick}
-         onKeyDown={onKeyDown}
-         onFocus={() => isSelected}
-         onBlur={() =>!isSelected}
          aria-expanded={isOpen}
          aria-controls={`Accordion_Panel_${index}`}
-         ref={ focusRef  }
+         ref={focusRef}
+        onFocus={setFocus}
+        onBlur={setBlur}
          tabIndex={1}
          >
          <span className="Accordion-title">
