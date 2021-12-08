@@ -14,14 +14,15 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-    
+    const classList = [];
+
     this.accordions = props.children;
      this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
     });
-    const classList = [];
+  
    
     this.state = { openSections };
 
@@ -34,11 +35,25 @@ class Accordion extends Component {
     };
   }
 
-componentDidMount(){
-  this.classList = this.accordions.slice.call(document.querySelectorAll(".Accordion-trigger"));
-  console.log("classList: ", this.classList[1]);
-}
+  componentDidMount(){
+    this.classList = this.accordions.slice.call(document.querySelectorAll(".Accordion-trigger"));
+    // console.log("classList: ", this.classList);
+  }
 
+  componentDidUpdate(){
+    
+  }
+
+  select = () =>{
+
+  }
+
+  setFocus = () =>{
+    this.setState({selected: true})
+  }
+  setBlur = () => {
+    this.setState({selectd: false})
+  }
 
    handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
@@ -52,7 +67,6 @@ componentDidMount(){
               ...openSections,
               [label]: !isOpen
             }
-            
           });
         } else {
           this.setState({
@@ -76,7 +90,8 @@ componentDidMount(){
     } = this;
 
   
-    console.log("classList: ", this.classList);
+    // console.log("classList: ", this.classList);
+   
   
     return (
       <div className="Accordion">
@@ -87,7 +102,6 @@ componentDidMount(){
             handleClick={onClick}
             key={i}
             index={i}
-           
           >
             {child.props.children}
           </AccordionSection>
