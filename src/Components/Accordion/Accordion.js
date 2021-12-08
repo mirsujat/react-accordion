@@ -14,14 +14,14 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-
+    
     this.accordions = props.children;
      this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
     });
-
+    const classList = [];
    
     this.state = { openSections };
 
@@ -34,7 +34,10 @@ class Accordion extends Component {
     };
   }
 
-
+componentDidMount(){
+  this.classList = this.accordions.slice.call(document.querySelectorAll(".Accordion-trigger"));
+  console.log("classList: ", this.classList[1]);
+}
 
 
    handleAccordionOpen = (label, i) =>{
@@ -73,7 +76,7 @@ class Accordion extends Component {
     } = this;
 
   
-
+    console.log("classList: ", this.classList);
   
     return (
       <div className="Accordion">
