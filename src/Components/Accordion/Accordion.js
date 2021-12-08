@@ -14,7 +14,6 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-    const classList = [];
 
     this.accordions = props.children;
      this.accordions.forEach((child, i) => {
@@ -23,9 +22,7 @@ class Accordion extends Component {
       }
     });
   
-   
     this.state = { openSections };
-
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -36,7 +33,7 @@ class Accordion extends Component {
   }
 
   componentDidMount(){
-    this.classList = this.accordions.slice.call(document.querySelectorAll(".Accordion-trigger"));
+    // this.classList = this.accordions.slice.call(document.querySelectorAll(".Accordion-trigger"));
     // console.log("classList: ", this.classList);
   }
 
