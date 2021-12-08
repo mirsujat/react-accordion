@@ -25,8 +25,6 @@ class Accordion extends Component {
    
     this.state = { openSections };
 
-    this.state = { openSections};
-
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -62,7 +60,7 @@ class Accordion extends Component {
        }
   }
 
-   toggle = (child, i) => {
+  onClick = (child, i) => {
     this.handleAccordionOpen(child, i);
 
   };
@@ -70,7 +68,7 @@ class Accordion extends Component {
 
   render() {
     const { 
-      toggle,
+      onClick,
       state: { openSections},
     } = this;
 
@@ -83,9 +81,7 @@ class Accordion extends Component {
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
-            toggle={toggle}
-
-
+            handleClick={onClick}
             key={i}
             index={i}
            
