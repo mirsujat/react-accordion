@@ -9,7 +9,10 @@ function usePrevious(value) {
   return ref.current;
 }
 
-const AccordionSection = ({index, label, children, isOpen, handleClick}) =>{
+const AccordionSection = ({
+  index, label, children, isOpen, 
+  handleClick, handleKeyDown                      
+}) =>{
   const focusRef = useRef(null);
   const [isSelected, setIsSelected] = useState(false);
   // const secId = `Accordion_${index}`;
@@ -46,7 +49,7 @@ console.log("focusRef: ", focusRef);
             aria-controls={`panel_${index}`}
             aria-expanded={isOpen}
             onClick={onClick}
-
+            onKeyDown={handleKeyDown}
             tabIndex={0}
             onFocus={setFocus}
             onBlur={setBlur}

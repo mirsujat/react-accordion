@@ -76,9 +76,11 @@ class Accordion extends Component {
 
   onClick = (child, i) => {
     this.handleAccordionOpen(child, i);
-
   };
-
+  onKeyDown = (e) =>{
+    e.preventDefault();
+    console.log("onKeyDown: ", e.keyCode)
+  }
 
   render() {
     const { 
@@ -97,6 +99,7 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             handleClick={onClick}
+            handleKeyDown={this.onKeyDown}
             key={i}
             index={i}
           >
