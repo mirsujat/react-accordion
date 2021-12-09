@@ -14,12 +14,12 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-    const selected = {};
-     this.labelRef = null;
-    this.setLabelRef = el =>{this.labelRef = el}
-    this.focusLabelRef = () =>{
-      if(this.labelRef) this.labelRef.focus();
-    }
+    const selected = { label: null };
+     this.labelRef = React.createRef();
+    // this.setLabelRef = el =>{this.labelRef = el}
+    // this.focusLabelRef = () =>{
+    //   if(this.labelRef) this.labelRef.focus();
+    // }
     
     this.accordions = props.children || [];
      this.accordions.forEach((child, i) => {
@@ -27,8 +27,8 @@ class Accordion extends Component {
         openSections[child.props.label] = true;
       }
       if (child.props.isSelected) {
-        selected[child.props.label] = true;
-         this.focusLabelRef();
+        selected.label = [child.props.label];
+        
       }
     });
    
@@ -44,9 +44,9 @@ class Accordion extends Component {
   }
 
 
-  componentDidUpdate(){
-    this.focusLabelRef();
-  }
+  // componentDidUpdate(){
+  //   this.focusLabelRef();
+  // }
 
    handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
@@ -68,15 +68,18 @@ class Accordion extends Component {
               [label]: !isOpen
             },
             selected: {
-              [label] : !isSelected
+              label : label
             }
           });
        }
-       this.focusLabelRef(this.accordions[i]);
+      
   }
-  handleSelect = (child) =>{
+  handleSelect = (label) =>{
     const {selected} = this.state;
-    this.setState({ selected: child});
+    if(label === selected.label){
+      this.setState({ selected: {label}});
+    }
+   
   }
 
   onClick = (child, i) => {
@@ -111,8 +114,12 @@ class Accordion extends Component {
             isSelect={!!selected[child.props.label]}
             label={child.props.label}
             handleClick={onClick}
-            handleKeyUp={(e) => this.onKeyUp(e, child)}
-            labelRef={this.setLabelRef}
+            handleKeyUp={(e) => this.onKeyUp(e, child.props.label)}
+            labelRef={(el) => {
+              if(child.props.label === this.state.selected.label){
+                this.labelRef = el
+              }
+            }}
             setFocus={this.focusLabelRef}
             key={i}
             index={i}
