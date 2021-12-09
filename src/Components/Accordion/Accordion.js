@@ -59,12 +59,13 @@ class Accordion extends Component {
        }
   }
   handleSelect = (child) =>{
-    const {openSections} = this.state;
-    this.setState({openSections: {...openSections}, selected: child});
+    const {selected} = this.state;
+    this.setState({ selected: child});
   }
 
   onClick = (child, i) => {
     this.handleAccordionOpen(child, i);
+    this.handleSelect(child);
    
   };
   
@@ -72,7 +73,10 @@ class Accordion extends Component {
   onKeyUp = (e, child) =>{
     let index = this.accordions.indexOf(child);
     let length = this.accordions.length;
-    console.log("index: ", length);
+    if(e.keyCode === 40){
+      this.handleSelect(this.accordions[index + 1]);
+    }
+    console.log("index: ", e.keyCode);
   }
 
   render() {
@@ -96,7 +100,8 @@ class Accordion extends Component {
             {child.props.children}
           </AccordionSection>
         ))
-        }
+        
+      }
       </div>
     );
   }

@@ -33,6 +33,11 @@ const AccordionSection = ({
    const onClick = () =>{
      handleClick(label);
     }
+
+  // const onKeyUp = (e) =>{
+  //   e.preventDefault();
+  //   handleKeyUp(focusRef.current.focus())
+  // }
     const setFocus = () => setIsSelected(true);
     const setBlur = () => setIsSelected(false);
 
