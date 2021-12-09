@@ -14,16 +14,25 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-    
+    const selected = {};
+     this.labelRef = null;
+    this.setLabelRef = el =>{this.labelRef = el}
+    this.focusLabelRef = () =>{
+      if(this.labelRef) this.labelRef.focus();
+    }
     
     this.accordions = props.children || [];
      this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
       }
+      if (child.props.isSelected) {
+        selected[child.props.label] = true;
+         this.focusLabelRef();
+      }
     });
-  
-    this.state = { openSections, selected: null };
+   
+    this.state = { openSections, selected };
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -31,16 +40,19 @@ class Accordion extends Component {
       up: 38,
       down: 40
     };
+
   }
 
-  componentDidMount(){}
 
-  componentDidUpdate(){}
+  componentDidUpdate(){
+    this.focusLabelRef();
+  }
 
    handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
-        state: { openSections } } = this;
+        state: { openSections, selected } } = this;
         const isOpen = !!openSections[label];
+        const isSelected = !!selected[label];
     
 
         if (allowMultipleOpen) {
@@ -54,9 +66,13 @@ class Accordion extends Component {
           this.setState({
             openSections: {
               [label]: !isOpen
+            },
+            selected: {
+              [label] : !isSelected
             }
           });
        }
+       this.focusLabelRef(this.accordions[i]);
   }
   handleSelect = (child) =>{
     const {selected} = this.state;
@@ -65,36 +81,39 @@ class Accordion extends Component {
 
   onClick = (child, i) => {
     this.handleAccordionOpen(child, i);
-    this.handleSelect(child);
-   
   };
   
   //TODO
   onKeyUp = (e, child) =>{
     let index = this.accordions.indexOf(child);
     let length = this.accordions.length;
-    // if(e.keyCode === 40){
-    //   this.handleSelect(this.accordions[index + 1]);
-    // }
-    console.log("index: ", e.currentTarget);
+    if(e.keyCode === 9){
+      this.handleSelect(child);
+    }
+    if(e.keyCode === 40){
+      this.handleSelect(this.accordions[index + 1]);
+    }
+    // console.log("index: ", e.currentTarget);
   }
 
   render() {
     const { 
       onClick,
-      state: { openSections},
+      state: { openSections, selected},
     } = this;
 
-  
+  console.log("This labelRef: ", this.labelRef);
     return (
       <div className="Accordion">
         { this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
-
+            isSelect={!!selected[child.props.label]}
             label={child.props.label}
             handleClick={onClick}
             handleKeyUp={(e) => this.onKeyUp(e, child)}
+            labelRef={this.setLabelRef}
+            setFocus={this.focusLabelRef}
             key={i}
             index={i}
           >
@@ -103,6 +122,7 @@ class Accordion extends Component {
         ))
         
       }
+      
       </div>
     );
   }

@@ -11,38 +11,34 @@ function usePrevious(value) {
 
 const AccordionSection = ({
   index, label, children, isOpen, 
-  handleClick, handleKeyUp  
+  handleClick, handleKeyUp, labelRef, setFocus  
 }) =>{
-  const focusRef = useRef(null);
-  const [isSelected, setIsSelected] = useState(false);
+  // const focusRef = useRef(null);
+  // const [isSelected, setIsSelected] = useState(false);
   
-  const wasSelected = usePrevious(isSelected);
+  // const wasSelected = usePrevious(isSelected);
 
-  useEffect(() =>{
-    if(!wasSelected && isSelected){
-      setFocus();
-      focusRef.current.focus();
-    }
-     if(wasSelected && !isSelected){
-      setBlur();
-      focusRef.current.blur();
-    }
-  }, [wasSelected, isSelected])
+  // useEffect(() =>{
+  //   if(!wasSelected && isSelected){
+  //     setFocus();
+  //     labelRef.focus();
+  //   }
+  //    return;
+  // }, [wasSelected, isSelected])
+
+
 
 
    const onClick = () =>{
-     handleClick(label);
+     handleClick(label, index);
     }
 
-  // const onKeyUp = (e) =>{
-  //   e.preventDefault();
-  //   handleKeyUp(focusRef.current.focus())
-  // }
-    const setFocus = () => setIsSelected(true);
-    const setBlur = () => setIsSelected(false);
+  
+  //  const setFocus = () => setIsSelected(true);
+  //  const setBlur = () => setIsSelected(false);
 
   
-console.log("focusRef: ", focusRef);
+
 
     return(
       <>
@@ -52,12 +48,13 @@ console.log("focusRef: ", focusRef);
             className="Accordion-trigger" 
             aria-controls={`panel_${index}`}
             aria-expanded={isOpen}
+            
             onClick={onClick}
             onKeyUp={handleKeyUp}
             tabIndex={0}
             onFocus={setFocus}
-            onBlur={setBlur}
-            ref={focusRef}
+           
+            ref={labelRef}
           >
               <span className="Accordion-title">
               {label}
