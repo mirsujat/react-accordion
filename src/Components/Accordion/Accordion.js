@@ -14,7 +14,7 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-
+    
     this.accordions = props.children;
      this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
@@ -22,7 +22,7 @@ class Accordion extends Component {
       }
     });
   
-    this.state = { openSections };
+    this.state = { openSections, selected: null };
     this.navigationKey = {
       tabKey: 13,
       end: 35,
@@ -41,9 +41,7 @@ class Accordion extends Component {
     
   }
 
-  select = () =>{
 
-  }
 
   setFocus = () =>{
     this.setState({selected: true})
@@ -73,13 +71,20 @@ class Accordion extends Component {
           });
        }
   }
+  handleSelect = (child) =>{
+    const {openSections} = this.state;
+   
+    this.setState({openSections: {...openSections}, selected: {child : child}})
+  }
 
   onClick = (child, i) => {
     this.handleAccordionOpen(child, i);
   };
-  onKeyDown = (e) =>{
-    e.preventDefault();
-    console.log("onKeyDown: ", e.keyCode)
+  onKeyDown = ({e, child, i}) =>{
+    const index = this.accordions.indexOf(child)|| this.accordions[0];
+     this.handleSelect( this.accordions[index] );
+    
+    console.log("onKeyDown: ", index);
   }
 
   render() {
@@ -99,7 +104,7 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             handleClick={onClick}
-            handleKeyDown={this.onKeyDown}
+            handleKeyDown={(e) => this.onKeyDown(e, child, i)}
             key={i}
             index={i}
           >

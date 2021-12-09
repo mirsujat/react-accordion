@@ -30,7 +30,10 @@ const AccordionSection = ({
     }
   }, [wasSelected, isSelected])
 
-
+  // const onKeyDown = (e) =>{
+  //   e.preventDefault();
+  //   handleKeyDown(children);
+  // }
    const onClick = () =>{
      handleClick(label);
     }
