@@ -11,7 +11,7 @@ function usePrevious(value) {
 
 const AccordionSection = ({
   index, label, children, isOpen, 
-  handleClick, handleKeyUp                      
+  handleClick, handleKeyUp  
 }) =>{
   const focusRef = useRef(null);
   const [isSelected, setIsSelected] = useState(false);

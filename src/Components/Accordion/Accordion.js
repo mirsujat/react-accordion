@@ -73,10 +73,10 @@ class Accordion extends Component {
   onKeyUp = (e, child) =>{
     let index = this.accordions.indexOf(child);
     let length = this.accordions.length;
-    if(e.keyCode === 40){
-      this.handleSelect(this.accordions[index + 1]);
-    }
-    console.log("index: ", e.keyCode);
+    // if(e.keyCode === 40){
+    //   this.handleSelect(this.accordions[index + 1]);
+    // }
+    console.log("index: ", e.currentTarget);
   }
 
   render() {
@@ -91,6 +91,7 @@ class Accordion extends Component {
         { this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
+
             label={child.props.label}
             handleClick={onClick}
             handleKeyUp={(e) => this.onKeyUp(e, child)}
