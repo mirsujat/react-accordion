@@ -11,13 +11,12 @@ function usePrevious(value) {
 
 const AccordionSection = ({
   index, label, children, isOpen, 
-  handleClick, handleKeyDown                      
+  handleClick, handleKeyUp                      
 }) =>{
   const focusRef = useRef(null);
   const [isSelected, setIsSelected] = useState(false);
-  // const secId = `Accordion_${index}`;
-  // const focusId = focusRef.current === null ? null : focusRef.current.id;
-    const wasSelected = usePrevious(isSelected);
+  
+  const wasSelected = usePrevious(isSelected);
 
   useEffect(() =>{
     if(!wasSelected && isSelected){
@@ -30,10 +29,7 @@ const AccordionSection = ({
     }
   }, [wasSelected, isSelected])
 
-  // const onKeyDown = (e) =>{
-  //   e.preventDefault();
-  //   handleKeyDown(children);
-  // }
+
    const onClick = () =>{
      handleClick(label);
     }
@@ -52,7 +48,7 @@ console.log("focusRef: ", focusRef);
             aria-controls={`panel_${index}`}
             aria-expanded={isOpen}
             onClick={onClick}
-            onKeyDown={handleKeyDown}
+            onKeyUp={handleKeyUp}
             tabIndex={0}
             onFocus={setFocus}
             onBlur={setBlur}

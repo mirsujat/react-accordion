@@ -15,7 +15,8 @@ class Accordion extends Component {
     super(props);
     const openSections = {};
     
-    this.accordions = props.children;
+    
+    this.accordions = props.children || [];
      this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
@@ -32,23 +33,9 @@ class Accordion extends Component {
     };
   }
 
-  componentDidMount(){
-    // this.classList = this.accordions.slice.call(document.querySelectorAll(".Accordion-trigger"));
-    // console.log("classList: ", this.classList);
-  }
+  componentDidMount(){}
 
-  componentDidUpdate(){
-    
-  }
-
-
-
-  setFocus = () =>{
-    this.setState({selected: true})
-  }
-  setBlur = () => {
-    this.setState({selectd: false})
-  }
+  componentDidUpdate(){}
 
    handleAccordionOpen = (label, i) =>{
     const { props: { allowMultipleOpen }, 
@@ -73,18 +60,19 @@ class Accordion extends Component {
   }
   handleSelect = (child) =>{
     const {openSections} = this.state;
-   
-    this.setState({openSections: {...openSections}, selected: {child : child}})
+    this.setState({openSections: {...openSections}, selected: child});
   }
 
   onClick = (child, i) => {
     this.handleAccordionOpen(child, i);
+   
   };
-  onKeyDown = ({e, child, i}) =>{
-    const index = this.accordions.indexOf(child)|| this.accordions[0];
-     this.handleSelect( this.accordions[index] );
-    
-    console.log("onKeyDown: ", index);
+  
+  //TODO
+  onKeyUp = (e, child) =>{
+    let index = this.accordions.indexOf(child);
+    let length = this.accordions.length;
+    console.log("index: ", length);
   }
 
   render() {
@@ -94,9 +82,6 @@ class Accordion extends Component {
     } = this;
 
   
-    // console.log("classList: ", this.classList);
-   
-  
     return (
       <div className="Accordion">
         { this.accordions.map((child, i) => (
@@ -104,7 +89,7 @@ class Accordion extends Component {
             isOpen={!!openSections[child.props.label]}
             label={child.props.label}
             handleClick={onClick}
-            handleKeyDown={(e) => this.onKeyDown(e, child, i)}
+            handleKeyUp={(e) => this.onKeyUp(e, child)}
             key={i}
             index={i}
           >
