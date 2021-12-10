@@ -11,7 +11,7 @@ function usePrevious(value) {
 
 const AccordionSection = ({
   index, label, children, isOpen, 
-  handleClick, handleKeyUp, labelRef, setFocus  
+  handleClick, handleKeyUp, labelRef, isSelect
 }) =>{
   // const focusRef = useRef(null);
   // const [isSelected, setIsSelected] = useState(false);
@@ -31,9 +31,9 @@ const AccordionSection = ({
 
    const onClick = () =>{
      handleClick(label, index);
+     
     }
 
-  
   //  const setFocus = () => setIsSelected(true);
   //  const setBlur = () => setIsSelected(false);
 
@@ -52,8 +52,6 @@ const AccordionSection = ({
             onClick={onClick}
             onKeyUp={handleKeyUp}
             tabIndex={0}
-            onFocus={setFocus}
-           
             ref={labelRef}
           >
               <span className="Accordion-title">
