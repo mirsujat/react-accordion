@@ -20,12 +20,10 @@ const AccordionSection = ({
 
   useEffect(() =>{
     if(!wasSelected && isSelect){
-      setFocus();
       focusRef.current.focus();
     }
   }, [wasSelected, isSelect])
 
-  
   const setFocus = (e) => {if(isSelect) setIsSelected(true)} 
   const setBlur = () => {if(!isSelect) setIsSelected(false)} 
 
@@ -38,7 +36,6 @@ const AccordionSection = ({
           focusRef.current.focus();
         }
   }
-
 
   const onClick = () =>{
     handleClick(label, index);
@@ -60,7 +57,7 @@ const AccordionSection = ({
             onBlur={setBlur}
             tabIndex={0}
             ref={focusRef}
-            type="button"
+            
           >
               <span className="Accordion-title">
               {label}

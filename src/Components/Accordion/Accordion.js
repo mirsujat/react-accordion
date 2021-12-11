@@ -34,7 +34,7 @@ class Accordion extends Component {
 
   handleAccordionOpen = (label, i) => {
     const { props: { allowMultipleOpen },
-      state: { openSections, selected } } = this;
+      state: { openSections } } = this;
     const isOpen = !!openSections[label];
 
     if (allowMultipleOpen) {
@@ -94,7 +94,7 @@ class Accordion extends Component {
   render() {
     const {
       onClick,
-      state: { openSections, selected },
+      state: { openSections },
     } = this;
 
   return (
