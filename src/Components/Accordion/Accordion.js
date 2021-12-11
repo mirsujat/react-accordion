@@ -21,7 +21,7 @@ class Accordion extends Component {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
     }});
-    const selected = this.accordions.find(child => child.props.isSelected) || this.accordions[0].props.label;
+    const selected = this.accordions.find(child => child.props.isSelected);
 
 
     this.state = { openSections, selected };
@@ -76,8 +76,21 @@ class Accordion extends Component {
       if(e.keyCode === 9){
         this.handleSelect( this.accordions[index].props.label);
       }
-       if(e.keyCode === 40 && index < length - 1){
+      //UpArrow
+        if(e.keyCode === 38 && index > 0){
+       return this.handleSelect( this.accordions[index - 1].props.label);
+      }
+      //DownArrow
+       if(e.keyCode === 40 && index < length -1){
        return this.handleSelect( this.accordions[index + 1].props.label);
+      }
+      //Home
+       if(e.keyCode === 36 && index > 0 ){
+       return this.handleSelect( this.accordions[0].props.label);
+      }
+      //End
+       if(e.keyCode === 35 && index < length ){
+       return this.handleSelect( this.accordions[length].props.label);
       }
      console.log("keyCode: ", e.keyCode);
     
