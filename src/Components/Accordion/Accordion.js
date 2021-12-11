@@ -14,15 +14,12 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-   
-
     this.accordions = props.children || [];
     this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
     }});
     const selected = this.accordions.find(child => child.props.isSelected);
-
 
     this.state = { openSections, selected };
     this.navigationKey = {
@@ -57,7 +54,6 @@ class Accordion extends Component {
     }
   }
 
- 
   handleSelect = (child) => {
     this.setState({ selected: child });
   }
@@ -73,28 +69,26 @@ class Accordion extends Component {
     let index = this.accordions.findIndex(child => child.props.label === children)
     let length = this.accordions.length;
     
-      if(e.keyCode === 9){
-        this.handleSelect( this.accordions[index].props.label);
+    if(e.keyCode === 9){
+      this.handleSelect( this.accordions[index].props.label);
+    }
+    //UpArrow
+    if(e.keyCode === 38 && index > 0){
+      return this.handleSelect( this.accordions[index - 1].props.label);
+    }
+    //DownArrow
+    if(e.keyCode === 40 && index < length -1){
+      return this.handleSelect( this.accordions[index + 1].props.label);
       }
-      //UpArrow
-        if(e.keyCode === 38 && index > 0){
-       return this.handleSelect( this.accordions[index - 1].props.label);
-      }
-      //DownArrow
-       if(e.keyCode === 40 && index < length -1){
-       return this.handleSelect( this.accordions[index + 1].props.label);
-      }
-      //Home
-       if(e.keyCode === 36 && index > 0 ){
-       return this.handleSelect( this.accordions[0].props.label);
-      }
-      //End
-       if(e.keyCode === 35 && index < length ){
-       return this.handleSelect( this.accordions[length].props.label);
-      }
-     console.log("keyCode: ", e.keyCode);
-    
-   
+    //Home
+    if(e.keyCode === 36 && index > 0 ){
+      return this.handleSelect( this.accordions[0].props.label);
+    }
+    //End
+    if(e.keyCode === 35 && index < length ){
+      return this.handleSelect( this.accordions[length].props.label);
+    }
+    console.log("keyCode: ", e.keyCode);
   }
 
   render() {
@@ -103,8 +97,7 @@ class Accordion extends Component {
       state: { openSections, selected },
     } = this;
 
-   
-    return (
+  return (
       <div className="Accordion">
         {this.accordions.map((child, i) => (
           <AccordionSection

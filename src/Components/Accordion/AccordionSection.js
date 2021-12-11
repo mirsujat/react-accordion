@@ -26,8 +26,8 @@ const AccordionSection = ({
   }, [wasSelected, isSelect])
 
   
-   const setFocus = (e) => {if(isSelect) setIsSelected(true)} 
-   const setBlur = () => {if(!isSelect) setIsSelected(false)} 
+  const setFocus = (e) => {if(isSelect) setIsSelected(true)} 
+  const setBlur = () => {if(!isSelect) setIsSelected(false)} 
 
   //TODO
   const onKeyUp = (e, label, index) =>{
@@ -37,17 +37,12 @@ const AccordionSection = ({
           setFocus();
           focusRef.current.focus();
         }
-
   }
 
 
-   const onClick = () =>{
-     handleClick(label, index);
-     
+  const onClick = () =>{
+    handleClick(label, index);
     }
-
-  
-
 
     return(
       <>
@@ -83,7 +78,6 @@ const AccordionSection = ({
               {children}
           </section>         
       )}
- 
       </>
     )
   
