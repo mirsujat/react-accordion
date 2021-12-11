@@ -41,7 +41,8 @@
 }
 
 .Accordion-trigger:focus,
-.Accordion-trigger:hover {
+.Accordion-trigger:hover,
+.Accordion-trigger [aria-selected="true"] {
   background: hsl(216, 94%, 94%);
 }
 
@@ -66,7 +67,8 @@ button {
   outline: none;
 }
 
-.Accordion-trigger:focus .Accordion-title {
+.Accordion-trigger:focus .Accordion-title,
+.Accordion-trigger [aria-selected="true"] {
   border-color: hsl(216, 94%, 73%);
 }
 

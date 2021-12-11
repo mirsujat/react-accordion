@@ -14,15 +14,14 @@ class Accordion extends Component {
   constructor(props) {
     super(props);
     const openSections = {};
-    const selected = null;
+   
 
     this.accordions = props.children || [];
     this.accordions.forEach((child, i) => {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
-      }
-
-    });
+    }});
+    const selected = this.accordions.find(child => child.props.isSelected) || this.accordions[0].props.label;
 
 
     this.state = { openSections, selected };
@@ -70,10 +69,18 @@ class Accordion extends Component {
 
 //TODO
   onKeyUp = (e, children) => {
+    e.preventDefault();
     let index = this.accordions.findIndex(child => child.props.label === children)
-    if(index){
-      console.log("I am Clicked", this.handleSelect( this.accordions[index]));
-    }
+    let length = this.accordions.length;
+    
+      if(e.keyCode === 9){
+        this.handleSelect( this.accordions[index].props.label);
+      }
+       if(e.keyCode === 40 && index < length - 1){
+       return this.handleSelect( this.accordions[index + 1].props.label);
+      }
+     console.log("keyCode: ", e.keyCode);
+    
    
   }
 
@@ -89,7 +96,7 @@ class Accordion extends Component {
         {this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}
-            isSelected={child === this.state.selected}
+            isSelect={child.props.label === this.state.selected}
             label={child.props.label}
             handleClick={onClick}
             handleKeyUp={(e) => this.onKeyUp(e, child.props.label)}

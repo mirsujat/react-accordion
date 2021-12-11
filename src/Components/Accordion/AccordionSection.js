@@ -11,7 +11,7 @@ function usePrevious(value) {
 
 const AccordionSection = ({
   index, label, children, isOpen, 
-  handleClick, handleKeyUp
+  handleClick, handleKeyUp, isSelect
 }) =>{
   const focusRef = useRef(null);
   const [isSelected, setIsSelected] = useState(false);
@@ -19,18 +19,25 @@ const AccordionSection = ({
   const wasSelected = usePrevious(isSelected);
 
   useEffect(() =>{
-    if(!wasSelected && isSelected){
+    if(!wasSelected && isSelect){
       setFocus();
       focusRef.current.focus();
     }
-  }, [wasSelected, isSelected])
+  }, [wasSelected, isSelect])
+
+  
+   const setFocus = (e) => {if(isSelect) setIsSelected(true)} 
+   const setBlur = () => {if(!isSelect) setIsSelected(false)} 
 
   //TODO
-  const onKeyUp = (e, label) =>{
-    console.log("OnKeyUp");
-    handleKeyUp(e, label);
-    setFocus();
-    focusRef.current.focus();
+  const onKeyUp = (e, label, index) =>{
+      e.preventDefault();
+        handleKeyUp(e, label);
+        if(isSelect){
+          setFocus();
+          focusRef.current.focus();
+        }
+
   }
 
 
@@ -38,9 +45,6 @@ const AccordionSection = ({
      handleClick(label, index);
      
     }
-
-   const setFocus = () => setIsSelected(true);
-   const setBlur = () => setIsSelected(false);
 
   
 
@@ -53,12 +57,15 @@ const AccordionSection = ({
             className="Accordion-trigger" 
             aria-controls={`panel_${index}`}
             aria-expanded={isOpen}
+            aria-selected={isSelect}
             onClick={onClick}
-            onKeyUp={onKeyUp}
-            onFocus={setFocus}
+            onKeyUp={(e) => onKeyUp(e, label, index)}
+            
+            onFocus={(e) => setFocus(e)}
             onBlur={setBlur}
             tabIndex={0}
             ref={focusRef}
+            type="button"
           >
               <span className="Accordion-title">
               {label}
