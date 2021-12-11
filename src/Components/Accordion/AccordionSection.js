@@ -25,9 +25,12 @@ const AccordionSection = ({
     }
   }, [wasSelected, isSelected])
 
-  const onKeyUp = (e) =>{
+  //TODO
+  const onKeyUp = (e, label) =>{
     console.log("OnKeyUp");
-    handleKeyUp(e);
+    handleKeyUp(e, label);
+    setFocus();
+    focusRef.current.focus();
   }
 
 

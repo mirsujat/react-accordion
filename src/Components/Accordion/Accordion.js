@@ -68,17 +68,13 @@ class Accordion extends Component {
     this.handleAccordionOpen(child, i);
   };
 
-
-  onKeyUp = (e, child, label) => {
-    let index = this.accordions.indexOf(child);
-    let length = this.accordions.length;
-    if (e.keyCode === 9) {
-      this.handleSelect(label);
+//TODO
+  onKeyUp = (e, children) => {
+    let index = this.accordions.findIndex(child => child.props.label === children)
+    if(index){
+      console.log("I am Clicked", this.handleSelect( this.accordions[index]));
     }
-    if (e.keyCode === 40) {
-      this.handleSelect(this.accordions[index + 1].props.label);
-    }
-    // console.log("index: ", e.currentTarget);
+   
   }
 
   render() {
@@ -96,7 +92,7 @@ class Accordion extends Component {
             isSelected={child === this.state.selected}
             label={child.props.label}
             handleClick={onClick}
-            handleKeyUp={(e) => this.onKeyUp(e, child, child.props.label)}
+            handleKeyUp={(e) => this.onKeyUp(e, child.props.label)}
             key={i}
             index={i}
           >
