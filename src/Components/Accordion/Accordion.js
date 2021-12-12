@@ -27,7 +27,9 @@ class Accordion extends Component {
       end: 35,
       home: 36,
       up: 38,
-      down: 40
+      down: 40,
+      PgUp: 33,
+      PgDn: 34
     };
 
   }
@@ -85,7 +87,10 @@ class Accordion extends Component {
       return this.handleSelect( this.accordions[0].props.label);
     }
     //PageUp
-    if((e.keyCode === 33) && index < length - 1){
+    if((e.keyCode === 33) && index === 0 ){
+      return this.handleSelect( this.accordions[0].props.label);
+    }
+    if((e.keyCode === 33) && index < length ){
       return this.handleSelect( this.accordions[index - 1].props.label);
     }
    
@@ -106,7 +111,7 @@ class Accordion extends Component {
     if(e.keyCode === 35 && index !== length - 1  ){
       return this.handleSelect( this.accordions[length-1].props.label);
     }
-    console.log("keyCode: ", e.keyCode);
+   return;
   }
 
   render() {
