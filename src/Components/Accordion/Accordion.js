@@ -121,7 +121,7 @@ class Accordion extends Component {
     } = this;
 
   return (
-      <div className="Accordion">
+      <div className="Accordion" data-testid="accordion">
         {this.accordions.map((child, i) => (
           <AccordionSection
             isOpen={!!openSections[child.props.label]}

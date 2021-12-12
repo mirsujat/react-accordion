@@ -55,6 +55,7 @@ const AccordionSection = ({
             onBlur={setBlur}
             tabIndex={0}
             ref={focusRef}
+            data-testid="accordion_button"
           >
               <span className="Accordion-title">
               {label}
@@ -68,6 +69,7 @@ const AccordionSection = ({
           className="Accordion-panel"
           aria-labelledby={`Accordion_${index}`}
           aria-hidden={!isOpen}
+          data-testid="accordion-section"
           >
               {children}
           </section>         

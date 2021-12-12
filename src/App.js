@@ -5,7 +5,7 @@ import AccordionSection from './Components/Accordion/AccordionSection';
 import './App.css';
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-testid="app">
       <header className="App-header">
         <h1>Accessible React Accordion</h1>
       </header>
