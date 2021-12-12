@@ -73,20 +73,28 @@ class Accordion extends Component {
       this.handleSelect( this.accordions[index].props.label);
     }
     //UpArrow
-    if(e.keyCode === 38 && index > 0){
+    if((e.keyCode === 38) && index > 0){
+      return this.handleSelect( this.accordions[index - 1].props.label);
+    }
+    //PageDown
+    if((e.keyCode === 33) && index > 0){
       return this.handleSelect( this.accordions[index - 1].props.label);
     }
     //DownArrow
-    if(e.keyCode === 40 && index < length -1){
+    if((e.keyCode === 40) && index < length -1){
       return this.handleSelect( this.accordions[index + 1].props.label);
       }
+      //PageUp
+      if((e.keyCode === 34) && index < length -1){
+        return this.handleSelect( this.accordions[index + 1].props.label);
+        }
     //Home
     if(e.keyCode === 36 && index > 0 ){
       return this.handleSelect( this.accordions[0].props.label);
     }
     //End
-    if(e.keyCode === 35 && index < length ){
-      return this.handleSelect( this.accordions[length].props.label);
+    if(e.keyCode === 35 && index !== length - 1  ){
+      return this.handleSelect( this.accordions[length-1].props.label);
     }
     console.log("keyCode: ", e.keyCode);
   }

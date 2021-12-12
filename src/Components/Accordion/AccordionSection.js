@@ -48,16 +48,13 @@ const AccordionSection = ({
             id={`Accordion_${index}`}
             className="Accordion-trigger" 
             aria-controls={`panel_${index}`}
-            aria-expanded={isOpen}
-            aria-selected={isSelect}
+            aria-expanded={isSelect && isOpen}
             onClick={onClick}
             onKeyUp={(e) => onKeyUp(e, label, index)}
-            
             onFocus={(e) => setFocus(e)}
             onBlur={setBlur}
             tabIndex={0}
             ref={focusRef}
-            
           >
               <span className="Accordion-title">
               {label}
