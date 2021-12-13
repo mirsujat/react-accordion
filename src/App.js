@@ -1,6 +1,6 @@
-
 import Accordion from './Components/Accordion/Accordion';
 import AccordionSection from './Components/Accordion/AccordionSection';
+import Footer from "./Components/Footer/Footer";
 
 import './App.css';
 function App() {
@@ -8,6 +8,7 @@ function App() {
     <div className="App" data-testid="app">
       <header className="App-header">
         <h1>Accessible React Accordion</h1>
+        <a href="https://github.com/mirsujat/react-accordion" target="_blank" rel="noreferrer">Download Source Code</a>
       </header>
       <main>
         <section className="content">
@@ -62,8 +63,8 @@ function App() {
               </AccordionSection>
         </Accordion>
         </section>
-       
       </main>
+      <Footer></Footer>
     </div>
   );
 }
