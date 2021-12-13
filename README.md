@@ -1,4 +1,5 @@
 # Accessible React Accordion Component
+#### Build with [https://www.w3.org/TR/wai-aria-practices/#accordion](https://www.w3.org/TR/wai-aria-practices/#accordion)
 
 
 ### Basic Concept
