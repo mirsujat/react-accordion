@@ -21,18 +21,20 @@ In some accordions, there are additional elements that are always visible adjace
 `- Up Arrow (Optional):` If focus is on an accordion header, moves focus to the previous accordion header. If focus is on the first accordion header, either does nothing or moves focus to the last accordion header.
 `- Home (Optional):` When focus is on an accordion header, moves focus to the first accordion header.
 `- End (Optional):` When focus is on an accordion header, moves focus to the last accordion header.
+<strong>
 
+</strong>
 ### WAI-ARIA Roles, States, and Properties:
 <ul>
     <li>The title of each accordion header is contained in an element with <strong> role button 
     </strong>
     </li>
-    <li>Each accordion header <em>button</em> is wrapped in an element with role heading that has a value set for <em>aria-level</em> that is appropriate for the information architecture of the page.</li>
-    <li>If the native host language has an element with an implicit <em>heading</em> and <em>aria-level</em>, such as an HTML heading tag, a native host language element may be used.</li>
-    <li>The <em>button</em> element is the only element inside the <em>heading</em> element. That is, if there are other visually persistent elements, they are not included inside the <em>heading</em> element.</li>
-    <li>If the accordion panel associated with an accordion header is visible, the header button element has <em>aria-expanded</em> set to <em>true</em>. If the panel is not visible, <em>aria-expanded</em> is set to <em>false</em>.</li>
-    <li>The accordion header <em>button</em> element has <em>aria-controls</em> set to the ID of the element containing the accordion panel content.</li>
-     <li>If the accordion panel associated with an accordion header is visible, and if the accordion does not permit the panel to be collapsed, the header <em>button</em> element has <em>aria-disabled</em> set to <em>true</em>.</li>
+    <li>Each accordion header <strong>button</strong> is wrapped in an element with role heading that has a value set for <strong>aria-level</strong> that is appropriate for the information architecture of the page.</li>
+    <li>If the native host language has an element with an implicit <strong>heading</strong> and <strong>aria-level</strong>, such as an HTML heading tag, a native host language element may be used.</li>
+    <li>The <strong>button</strong> element is the only element inside the <strong>heading</strong> element. That is, if there are other visually persistent elements, they are not included inside the <strong>heading</strong> element.</li>
+    <li>If the accordion panel associated with an accordion header is visible, the header button element has <strong>aria-expanded</strong> set to <strong>true</strong>. If the panel is not visible, <strong>aria-expanded</strong> is set to <strong>false</strong>.</li>
+    <li>The accordion header <strong>button</strong> element has <strong>aria-controls</strong> set to the ID of the element containing the accordion panel content.</li>
+     <li>If the accordion panel associated with an accordion header is visible, and if the accordion does not permit the panel to be collapsed, the header <strong>button</strong> element has <strong>aria-disabled</strong> set to <strong>true</strong>.</li>
     <li>Optionally, each element that serves as a container for panel content has role region and aria-labelledby with a value that refers to the button that controls display of the panel.
         <li>Avoid using the region role in circumstances that create landmark region proliferation, e.g., in an accordion that contains more than approximately 6 panels that can be expanded at the same time.</li>
         <li>Role region is especially helpful to the perception of structure by screen reader users when panels contain heading elements or a nested accordion.</li>
