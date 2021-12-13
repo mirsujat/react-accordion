@@ -100,6 +100,16 @@ The focused accordion header button:
             -When focus is on first accordion header, moves focus to last accordion header.
             </td>
         </tr>
+        <tr>
+            <td>Home</td>
+            <td>When focus is on an accordion header, moves focus to the first accordion header.</td>
+        </tr>
+        <tr>
+            <td>End</td>
+            <td>
+             When focus is on an accordion header, moves focus to the last accordion header.
+            </td>
+        </tr>
     </tbody>
 </table>
 
