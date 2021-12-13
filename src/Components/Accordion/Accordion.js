@@ -8,7 +8,7 @@ import AccordionSection from "./AccordionSection";
 class Accordion extends Component {
 
   static defaultProps = {
-    allowMultipleOpen: false,
+    multiSelect: false,
   };
 
   constructor(props) {
@@ -35,11 +35,11 @@ class Accordion extends Component {
   }
 
   handleAccordionOpen = (label, i) => {
-    const { props: { allowMultipleOpen },
+    const { props: { multiSelect },
       state: { openSections } } = this;
     const isOpen = !!openSections[label];
 
-    if (allowMultipleOpen) {
+    if (multiSelect) {
       this.setState({
         openSections: {
           ...openSections,
