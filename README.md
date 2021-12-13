@@ -24,6 +24,7 @@ In some accordions, there are additional elements that are always visible adjace
 <strong>
 
 </strong>
+
 ### WAI-ARIA Roles, States, and Properties:
 <ul>
     <li>The title of each accordion header is contained in an element with <strong> role button 
