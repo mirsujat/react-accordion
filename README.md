@@ -24,8 +24,8 @@ In some accordions, there are additional elements that are always visible adjace
 
 ### WAI-ARIA Roles, States, and Properties:
 <ul>
-    <li>The title of each accordion header is contained in an element with <em>`role button.`</em></li>
-    <li>Each accordion header <em>`button`</em> is wrapped in an element with role heading that has a value set for <em>`aria-level`</em> that is appropriate for the information architecture of the page.</li>
+    <li>The title of each accordion header is contained in an element with <em>**role button**.</em></li>
+    <li>Each accordion header <em>button</em> is wrapped in an element with role heading that has a value set for <em>aria-level</em> that is appropriate for the information architecture of the page.</li>
     <li>If the native host language has an element with an implicit <em>heading</em> and <em>aria-level</em>, such as an HTML heading tag, a native host language element may be used.</li>
     <li>The <em>button</em> element is the only element inside the <em>heading</em> element. That is, if there are other visually persistent elements, they are not included inside the <em>heading</em> element.</li>
     <li>If the accordion panel associated with an accordion header is visible, the header button element has <em>aria-expanded</em> set to <em>true</em>. If the panel is not visible, <em>aria-expanded</em> is set to <em>false</em>.</li>
