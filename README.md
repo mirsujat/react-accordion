@@ -74,43 +74,43 @@ The focused accordion header button:
         <tr>
             <td>Tab</td>
             <td>
-            -Moves focus to the next focusable element.
-            -All focusable elements in the accordion are included in the page `Tab` sequence.
+            - Moves focus to the next focusable element.
+            - All focusable elements in the accordion are included in the page `Tab` sequence.
             </td>
         </tr>
         <tr>
             <td>Shift + Tab</td>
             <td>
-            -Moves focus to the previous focusable element.
-            -All focusable elements in the accordion are included in the page Tab sequence.
+            - Moves focus to the previous focusable element.
+            - All focusable elements in the accordion are included in the page Tab sequence.
             </td>
         </tr>
         <tr>
             <td>Down Arrow</td>
             <td>
-            -When focus is on an accordion header, moves focus to the next accordion header.
-            -When focus is on last accordion header, moves focus to first accordion header.
+            - When focus is on an accordion header, moves focus to the next accordion header.
+            - When focus is on last accordion header, moves focus to first accordion header.
             </td>
         </tr>
         <tr>
             <td>Up Arrow</td>
             <td>
-            -When focus is on an accordion header, moves focus to the previous accordion header.
-            -When focus is on first accordion header, moves focus to last accordion header.
+            - When focus is on an accordion header, moves focus to the previous accordion header.
+            - When focus is on first accordion header, moves focus to last accordion header.
             </td>
         </tr>
         <tr>
             <td>Page Down</td>
             <td>
-            -When focus is on an accordion header, moves focus to the next accordion header.
-            -When focus is on last accordion header, moves focus to first accordion header.
+            - When focus is on an accordion header, moves focus to the next accordion header.
+            - When focus is on last accordion header, moves focus to first accordion header.
             </td>
         </tr>
         <tr>
             <td>Page Up</td>
             <td>
-            -When focus is on an accordion header, moves focus to the previous accordion header.
-            -When focus is on first accordion header, moves focus to last accordion header.
+            - When focus is on an accordion header, moves focus to the previous accordion header.
+            - When focus is on first accordion header, moves focus to last accordion header.
             </td>
         </tr>
         <tr>
