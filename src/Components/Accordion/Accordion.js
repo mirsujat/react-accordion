@@ -78,6 +78,9 @@ class Accordion extends Component {
     if((e.keyCode === 38) && index > 0){
       return this.handleSelect( this.accordions[index - 1].props.label);
     }
+    if((e.keyCode === 38) && index === 0){
+      return this.handleSelect( this.accordions[length - 1].props.label);
+    }
     //PageDown
     if((e.keyCode === 34) && index < length -1){
       return this.handleSelect( this.accordions[index + 1].props.label);
@@ -88,7 +91,7 @@ class Accordion extends Component {
     }
     //PageUp
     if((e.keyCode === 33) && index === 0 ){
-      return this.handleSelect( this.accordions[0].props.label);
+      return this.handleSelect( this.accordions[length - 1].props.label);
     }
     if((e.keyCode === 33) && index < length ){
       return this.handleSelect( this.accordions[index - 1].props.label);
