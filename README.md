@@ -6,8 +6,7 @@ An accordion is a vertically stacked set of interactive headings that each conta
 
 Terms for understanding accordions include:
 ### Accordion Header:
-Label for or thumbnail representing a section of content that also serves as a control for </br>
-showing, and in some implementations, hiding the section of content.
+Label for or thumbnail representing a section of content that also serves as a control for showing, and in some </br>  implementations, hiding the section of content.
 ### Accordion Panel:
     Section of content associated with an accordion header.
 In some accordions, there are additional elements that are always visible adjacent to the accordion header. For instance, a menubutton may accompany each accordion header to provide access to actions that apply to that section. And, in some cases, a snippet of the hidden content may also be visually persistent.
