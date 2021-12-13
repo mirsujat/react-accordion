@@ -34,6 +34,75 @@ In some accordions, there are additional elements that are always visible adjace
     -Avoid using the region role in circumstances that create landmark region proliferation, e.g., in an accordion that contains more than approximately 6 panels that can be expanded at the same time.
     -Role region is especially helpful to the perception of structure by screen reader users when panels contain heading elements or a nested accordion.
 
+### Accessibility Features:
+The visual design includes features intended to help users understand that the accordion provides enhanced keyboard navigation functions. When an accordion header button has keyboard focus, the styling of the accordion container and all its header buttons is changed.
+
+When any accordion header button receives focus:
+-The border encompassing the entire accordion changes color.
+-The background color of the accordion header buttons changes.
+
+The focused accordion header button:
+-Has a border that encompasses both the header text and icon.
+-Has a background color that distinguishes it from the other accordion buttons that are not focused.
+
+### Keyboard Support
+<table>
+    <thead>
+        <tr>
+        <th>Key</th>
+        <th>Function</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Space or Enter</td>
+            <td>When focus is on the accordion header of a collapsed section, expands the section.</td>
+        </tr>
+        <tr>
+            <td>Tab</td>
+            <td>
+            -Moves focus to the next focusable element.
+            -All focusable elements in the accordion are included in the page `Tab` sequence.
+            </td>
+        </tr>
+        <tr>
+            <td>Shift + Tab</td>
+            <td>
+            -Moves focus to the previous focusable element.
+            -All focusable elements in the accordion are included in the page Tab sequence.
+            </td>
+        </tr>
+        <tr>
+            <td>Down Arrow</td>
+            <td>
+            -When focus is on an accordion header, moves focus to the next accordion header.
+            -When focus is on last accordion header, moves focus to first accordion header.
+            </td>
+        </tr>
+        <tr>
+            <td>Up Arrow</td>
+            <td>
+            -When focus is on an accordion header, moves focus to the previous accordion header.
+            -When focus is on first accordion header, moves focus to last accordion header.
+            </td>
+        </tr>
+        <tr>
+            <td>Page Down</td>
+            <td>
+            -When focus is on an accordion header, moves focus to the next accordion header.
+            -When focus is on last accordion header, moves focus to first accordion header.
+            </td>
+        </tr>
+        <tr>
+            <td>Page Up</td>
+            <td>
+            -When focus is on an accordion header, moves focus to the previous accordion header.
+            -When focus is on first accordion header, moves focus to last accordion header.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 
 ## Available Scripts
 
