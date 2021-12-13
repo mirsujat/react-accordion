@@ -107,12 +107,12 @@ button {
 }
 
 main {
-  display: block;
-  height: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  padding-bottom: 50px;
 }
 footer {
   position: absolute;
