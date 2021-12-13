@@ -51,12 +51,12 @@ In some accordions, there are additional elements that are always visible adjace
 The visual design includes features intended to help users understand that the accordion provides enhanced keyboard navigation functions. When an accordion header button has keyboard focus, the styling of the accordion container and all its header buttons is changed.
 
 When any accordion header button receives focus:
--The border encompassing the entire accordion changes color.
--The background color of the accordion header buttons changes.
+- The border encompassing the entire accordion changes color.
+- The background color of the accordion header buttons changes.
 
 The focused accordion header button:
--Has a border that encompasses both the header text and icon.
--Has a background color that distinguishes it from the other accordion buttons that are not focused.
+- Has a border that encompasses both the header text and icon.
+- Has a background color that distinguishes it from the other accordion buttons that are not focused.
 
 ### Keyboard Support
 <table>
