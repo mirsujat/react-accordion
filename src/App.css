@@ -1,10 +1,12 @@
 .App {
   text-align: center;
+  padding: 15px;
+
 }
 .Accordion {
   margin: 0;
   padding: 0;
-  border: 2px solid hsl(0, 0%, 82%);
+  border: 1px solid  rgb(209, 209, 209);
   /* border-radius: 7px; */
   width: 20em;
 }
@@ -15,20 +17,20 @@
 }
 
 .Accordion.focus {
-  border-color: hsl(216, 94%, 73%);
+  border-color:  rgb(33, 33, 33);
 }
 
 .Accordion.focus h3 {
-  background-color: hsl(0, 0%, 97%);
+  background-color: rgb(247, 247, 247);
 }
 
 .Accordion > * + * {
-  border-top: 1px solid hsl(0, 0%, 82%);
+  border-top: 1px solid rgb(209, 209, 209);
 }
 
 .Accordion-trigger {
   background: none;
-  color: hsl(0, 0%, 13%);
+  color: 	rgb(33, 33, 33);
   display: block;
   font-size: 1rem;
   font-weight: normal;
@@ -41,9 +43,9 @@
 }
 
 .Accordion-trigger:focus,
-.Accordion-trigger:hover,
-.Accordion-trigger [aria-selected="true"] {
-  background: hsl(216, 94%, 94%);
+.Accordion-trigger:hover {
+  background: 	rgb(225, 237, 254);
+  color: 	rgb(12, 12, 12);
 }
 
 .Accordion *:first-child .Accordion-trigger {
@@ -61,19 +63,18 @@ button {
 .Accordion-title {
   display: block;
   pointer-events: none;
-  border: transparent 2px solid;
+  border: transparent 1px solid;
   border-radius: 5px;
   padding: 0.25em;
   outline: none;
 }
 
-.Accordion-trigger:focus .Accordion-title,
-.Accordion-trigger [aria-selected="true"] {
-  border-color: hsl(216, 94%, 73%);
+.Accordion-trigger:focus .Accordion-title {
+  border-color: 	rgb(121, 173, 251);
 }
 
 .Accordion-icon {
-  border: solid hsl(0, 0%, 62%);
+  border: solid 	rgb(158, 158, 158);
   border-width: 0 2px 2px 0;
   height: 0.5rem;
   pointer-events: none;
@@ -86,7 +87,7 @@ button {
 
 .Accordion-trigger:focus .Accordion-icon,
 .Accordion-trigger:hover .Accordion-icon {
-  border-color: hsl(216, 94%, 73%);
+  border-color: 	rgb(121, 173, 251);
 }
 
 .Accordion-trigger[aria-expanded="true"] .Accordion-icon {
@@ -96,6 +97,7 @@ button {
 .Accordion-panel {
   margin: 0;
   padding: 1em 1.5em;
+  text-align: left;
 }
 
 /* For Edge bug https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/4806035/ */

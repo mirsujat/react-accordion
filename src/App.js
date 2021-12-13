@@ -11,39 +11,30 @@ function App() {
       </header>
       <main>
         <Accordion>
-        <AccordionSection label="Alligator Mississippiensis">
-          <p>
-            <strong>Common Name:</strong> American Alligator
+        <AccordionSection label="Section 1">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet.
+            
           </p>
-          <p>
-            <strong>Distribution:</strong> Texas to North Carolina, United
-            States
-          </p>
-          <p>
-            <strong>Endangered Status:</strong> Currently Not Endangered
-          </p>
-             <p>
-            <strong>Endangered Status:</strong> Currently Not Endangered
-          </p>
+        
         </AccordionSection>
-        <AccordionSection label="Mississippiensis Lambaa">
-          <p>
-            <strong>Common Name:</strong> American Alligator
+        <AccordionSection label="Section 2">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet.
+            
           </p>
-          <p>
-            <strong>Distribution:</strong> Texas to North Carolina, United
-            States
-          </p>
-          <p>
-            <strong>Endangered Status:</strong> Currently Not Endangered
-          </p>
+          
         </AccordionSection>
-        <AccordionSection label="Alligator Sinensis">
-          <p>
-            <strong>Common Name:</strong> Chinese Alligator
-          </p>
-          <p>
-            <strong>Distribution:</strong> Eastern China
+        <AccordionSection label="Section 3">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet.
+            
           </p>
           
         </AccordionSection>
