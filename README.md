@@ -5,6 +5,8 @@
 #### Google Lighthouse
 ![Google Lighthouse](https://github.com/mirsujat/react-accordion/blob/master/Lighthouse-Report-Viewer.png)
 
+#### NVDA 100%
+
 ### [See Live Demo](https://accessible-react-accordion.netlify.app/)
 ### Basic Concept
 An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content. The headings function as controls that enable users to reveal or hide their associated sections of content. Accordions are commonly used to reduce the need to scroll when presenting multiple sections of content on a single page.
