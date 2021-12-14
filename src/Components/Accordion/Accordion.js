@@ -16,7 +16,7 @@ class Accordion extends Component {
       if (child.props.isOpen) {
         openSections[child.props.label] = true;
     }});
-    const selected = this.accordions.find(child => child.props.isSelected);
+    const selected = this.accordions.find(child => child.props.isSelect);
 
     this.state = { openSections, selected };
     this.navigationKey = {
