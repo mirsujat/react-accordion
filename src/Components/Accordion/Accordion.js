@@ -1,8 +1,5 @@
 import React, { Component } from "react";
-
 import AccordionSection from "./AccordionSection";
-
-
 
 
 class Accordion extends Component {
@@ -65,7 +62,6 @@ class Accordion extends Component {
     this.handleAccordionOpen(child, i);
   };
 
-//TODO
   onKeyUp = (e, children) => {
     e.preventDefault();
     let index = this.accordions.findIndex(child => child.props.label === children)
