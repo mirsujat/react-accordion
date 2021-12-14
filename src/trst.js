@@ -1,19 +1,6 @@
-import Accordion from './Components/Accordion/Accordion';
-import AccordionSection from './Components/Accordion/AccordionSection';
-import Footer from "./Components/Footer/Footer";
-
-import './App.css';
-function App() {
-  return (
-    <div className="App" data-testid="app">
-      <header className="App-header">
-        <h1>Accessible React Accordion</h1>
-        <a href="https://github.com/mirsujat/react-accordion" target="_blank" rel="noreferrer">Download Source Code</a>
-      </header>
-      <main>
-        <section className="content">
-          <h2>Default state open one section at a time</h2>
-            <Accordion>
+ <section className="content">
+          <h2>multiSelect  open multiple section open at a time</h2>
+          <Accordion multiSelect>
               <AccordionSection label="Section 1">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
                   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -37,10 +24,3 @@ function App() {
               </AccordionSection>
         </Accordion>
         </section>
-      </main>
-      <Footer></Footer>
-    </div>
-  );
-}
-
-export default App;
